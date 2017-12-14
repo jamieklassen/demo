@@ -1,0 +1,4 @@
+jenkins:
+  plugins: github
+  password: admin
+  extra_packages: default-jdk
