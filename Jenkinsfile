@@ -10,7 +10,8 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        echo 'TODO: A real implementation!'
+        sh 'git remote add heroku https://git.heroku.com/still-hamlet-39525.git'
+        sh './mvnw heroku:deploy'
       }
     }
   }
