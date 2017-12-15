@@ -1,3 +1,6 @@
 #!/bin/bash
 
-juju deploy jenkins --config jenkins.yml
+set -e
+
+juju deploy jenkins --config $(dirname $0)/jenkins.yml
+juju expose jenkins

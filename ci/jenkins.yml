@@ -1,4 +1,16 @@
 jenkins:
-  plugins: github
+  plugins: |
+    credentials display-url-api git github-api plain-credentials scm-api
+    structs token-macro github workflow-aggregator jackson2-api workflow-scm-step
+    git-client mailer matrix-project ssh-credentials workflow-job workflow-step-api
+    pipeline-input-step workflow-basic-steps workflow-durable-task-step workflow-api
+    workflow-cps workflow-support workflow-cps-global-lib workflow-multibranch
+    pipeline-stage-view pipeline-model-definition pipeline-stage-step
+    pipeline-build-step pipeline-milestone-step apache-httpcomponents-client-4-api
+    jsch junit script-security pipeline-rest-api pipeline-graph-analysis
+    durable-task ace-editor jquery-detached handlebars momentjs cloudbees-folder
+    git-server branch-api credentials-binding docker-workflow pipeline-model-api
+    pipeline-model-declarative-agent pipeline-model-extensions 
+    pipeline-stage-tags-metadata docker-commons authentication-tokens
   password: admin
   extra_packages: default-jdk

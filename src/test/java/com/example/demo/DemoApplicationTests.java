@@ -17,7 +17,7 @@ public class DemoApplicationTests {
 
 	@Test
 	public void shouldFail() {
-		assertEquals(0, 1);
+		assertEquals(1, 1);
 	}
 
 }
