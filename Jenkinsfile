@@ -10,8 +10,8 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'git remote add heroku https://git.heroku.com/still-hamlet-39525.git'
-        sh './mvnw heroku:deploy'
+        sh 'juju scp target/*.war tomcat/0:'
+        sh 'juju ssh tomcat/0 "sudo mv *.war /var/lib/tomcat7/webapps/"'
       }
     }
   }
