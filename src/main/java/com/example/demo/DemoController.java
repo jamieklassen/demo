@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class DemoController {
 	@RequestMapping("/")
 	public @ResponseBody String hello() {
-		return "Hello Tia\n";
+		return "Hello Nobody\n";
 	}
 }
