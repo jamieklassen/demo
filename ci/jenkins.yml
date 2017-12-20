@@ -13,5 +13,5 @@ jenkins:
     pipeline-model-declarative-agent pipeline-model-extensions 
     pipeline-stage-tags-metadata docker-commons authentication-tokens
   password: admin
-  extra_packages: "default-jdk juju"
+  extra_packages: "default-jdk juju expect"
   install_sources: "ppa:juju/stable"
