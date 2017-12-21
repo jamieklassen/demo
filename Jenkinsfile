@@ -9,10 +9,11 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        echo 'Deploying....'
-        sh 'cp -r /usr/local/share/juju ~/.local/share/'
-        sh 'juju scp target/*.war tomcat/0:'
-        sh 'juju ssh tomcat/0 "sudo mv *.war /var/lib/tomcat7/webapps/"'
+        withCredentials([SSHUserPrivateKeyBinding(credentialsId: 'tomcat keypair', keyFileVariable: 'KEYFILE')]) {
+          echo 'Deploying....'
+          sh 'scp -i $KEYFILE target/*.war ubuntu@ec2-54-91-151-32.compute-1.amazonaws.com:~'
+          sh 'ssh -i $KEYFILE ubuntu@ec2-54-91-151-32.compute-1.amazonaws.com "sudo mv *.war /var/lib/tomcat7/webapps/"'
+        }
       }
     }
   }
