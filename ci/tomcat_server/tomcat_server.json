@@ -1,0 +1,24 @@
+{
+  "builders": [{
+    "ami_name": "agile-coe-demo-app-{{isotime | clean_ami_name}}",
+    "ami_description": "An Ubuntu AMI with Tomcat 7 installed",
+    "instance_type": "t2.micro",
+    "region": "us-east-1",
+    "type": "amazon-ebs",
+    "source_ami": "ami-fce3c696",
+    "ssh_username": "ubuntu"
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "inline": [
+      "echo 'Sleeping for 30 seconds to give Ubuntu enough time to initialize (otherwise, packages may fail to install).'",
+      "sleep 30"
+    ]
+  },{
+    "type": "shell",
+    "inline": [
+      "sudo apt-get update",
+      "sudo apt-get install -y tomcat7"
+    ]
+  }]
+}
