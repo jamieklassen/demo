@@ -12,3 +12,10 @@ first.
 
 There's a bit more work to do here in terms of automating the deployment of jenkins, the pipeline,
 and the tomcat server all together.
+TODOS:
+- add the correct GitHub server and API token to Jenkins
+- add the configuration for tomcat to Jenkins (this includes the keypair and IP)
+- make sure the IP is a known/trusted host on the Jenkins machine when provisioning
+- get the pipeline to read aforementioned configuration when SSHing
+- run through the awkward phases of creating the pipeline, running a build, then saving the
+  pipeline to trigger the configuration of the webhooks
