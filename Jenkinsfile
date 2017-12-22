@@ -9,7 +9,7 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        withCredentials([SSHUserPrivateKeyBinding(credentialsId: 'tomcat keypair', keyFileVariable: 'KEYFILE')]) {
+        withCredentials([sshUserPrivateKey(credentialsId: 'tomcat keypair', keyFileVariable: 'KEYFILE')]) {
           echo 'Deploying....'
           sh 'scp -i $KEYFILE target/*.war ubuntu@ec2-54-91-151-32.compute-1.amazonaws.com:~'
           sh 'ssh -i $KEYFILE ubuntu@ec2-54-91-151-32.compute-1.amazonaws.com "sudo mv *.war /var/lib/tomcat7/webapps/"'
