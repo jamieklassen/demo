@@ -1,5 +1,7 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
+*.tfstate
+.terraform/
 
 ### STS ###
 .apt_generated

@@ -1,10 +1,17 @@
 # Demo
+## Requirements
+- terraform CLI
+- aws CLI
+- juju CLI
+- jq
+
 ## Deploy jenkins
 Ensure you have [Juju](https://jujucharms.com/) and the juju-wait plugin installed and bootstrapped
 for your infrastructure. Then you can run
 ```
 ci/deploy_jenkins.sh
 ```
+
 ## Deploy tomcat
 From the `ci/tomcat_server` directory, you should be able to run `terraform apply`. However, you
 may also need to run `packer build` and copy the resulting AMI ID into the terraform template
@@ -19,3 +26,8 @@ TODOS:
 - get the pipeline to read aforementioned configuration when SSHing
 - run through the awkward phases of creating the pipeline, running a build, then saving the
   pipeline to trigger the configuration of the webhooks
+
+### Offline demo
+Just run `docker-compose up` to get your deployment environments stood up. Drop WAR files in
+`sit/`, `uat/` and `prod/` to deploy to those environments respectively. Run your own snowflake
+Jenkins.
