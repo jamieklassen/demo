@@ -7,7 +7,7 @@ pipeline {
         sh './mvnw clean package'
       }
     }
-    stage('Deploy') {
+    stage('SIT Deploy') {
       steps {
         echo 'Deploying....'
         sh 'cp target/*.war ~/sit/'
@@ -17,6 +17,12 @@ pipeline {
       steps {
         echo 'Running SoapUI tests...'
         sh '/Applications/SoapUI-5.4.0.app/Contents/java/app/bin/testrunner.sh REST-Project-1-soapui-project.xml'
+      }
+    }
+    stage('UAT Deploy') {
+      steps {
+        echo 'Deploying....'
+        sh 'cp target/*.war ~/uat/'
       }
     }
   }
