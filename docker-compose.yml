@@ -5,7 +5,7 @@ services:
     ports:
     - "8081:8080"
     volumes:
-    - /Users/Shared/Jenkins/Home/workspace/sit:/var/lib/tomcat7/webapps
+    - /Users/Shared/Jenkins/sit:/var/lib/tomcat7/webapps
   uat:
     image: tomcat
     ports:
