@@ -9,9 +9,8 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-          echo 'Deploying....'
-          sh 'cp target/*.war sit/'
-        }
+        echo 'Deploying....'
+        sh 'cp target/*.war sit/'
       }
     }
   }
