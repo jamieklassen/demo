@@ -2,6 +2,9 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 *.tfstate
 .terraform/
+soapui.log
+soapui-errors.log
+global-groovy.log
 
 ### STS ###
 .apt_generated

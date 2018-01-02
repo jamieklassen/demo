@@ -24,7 +24,7 @@ categorize as waste, which automated tools could be used to eliminate.
 
 I intend to create a mock pipeline as a proof-of-concept for how automation could be
 introduced to the current set of conventions. Generally the purpose of this mock pipeline is
-to be educational, presented to audiences of technically-capable folks with an interest in DevOps, 
+to educate, when presented to audiences of technically-capable folks with an interest in DevOps, 
 as part of a live talk and demo. Initially, the pipeline will consist of the following technical
 components:
 
