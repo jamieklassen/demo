@@ -10,7 +10,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'sudo cp target/*.war ~/sit/'
+        sh 'cp target/*.war ~/sit/'
       }
     }
   }
