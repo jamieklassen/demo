@@ -31,13 +31,18 @@ components:
 - a code repository, hosted on GitHub, for a Spring Boot sample web service
 - a Jenkins server, running on my laptop
 - the deployment environments (SIT, UAT and Prod) running as separate tomcat processes on my
-  laptop.
+  laptop. These environments will be described using a single Packer template, and though they
+  will be deployed as simple Docker containers for the purposes of the demo, Packer can provision
+  for many other infrastructures, including VirtualBox, VMWare and Amazon EBS.
 
 Initially the demo will consist of traversing a "happy path" usage of this system. I anticipate
 that there will be many opportunities to discuss potential edge cases and the subtler ways that
 automated delivery can add value to a software project.
 
-I will pretend to be a developer tasked with adding a feature to the app:
+The first part of the presentation involves a light description of Packer and its use in
+infrastructure-as-code as well as the suggestion that it could be used for cloud deployments.
+I will thereafter pretend to be a developer tasked with adding a feature to the app, demonstrating
+the following:
 
 1. I make my code changes
 2. I push a commit, triggering a build on Jenkins
