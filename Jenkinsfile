@@ -10,7 +10,7 @@ pipeline {
     stage('SIT Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'cp target/*.war ~/sit/'
+        sh 'cp target/*.war ~/sit/ROOT.war'
       }
     }
     stage('SIT Tests') {
@@ -22,7 +22,7 @@ pipeline {
     stage('UAT Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'cp target/*.war ~/uat/'
+        sh 'cp target/*.war ~/uat/ROOT.war'
       }
     }
   }
