@@ -15,7 +15,7 @@ pipeline {
     stage('Import Gold Image') {
       steps {
         echo 'Importing immutable infrastructure'
-        sh 'cat target/tomcat.tar | docker import - custom-tomcat'
+        sh 'cat target/tomcat.tar | /usr/local/bin/docker import - custom-tomcat'
       }
     }
     stage('Provision Infrastructure') {
