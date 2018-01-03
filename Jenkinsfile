@@ -3,7 +3,25 @@ pipeline {
   stages {
     stage('Start') {
       steps {
-        slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+        slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}console)")
+      }
+    }
+    stage('Build Gold Image') {
+      steps {
+        echo 'Building immutable infrastructure...'
+        sh 'packer build tomcat.json'
+      }
+    }
+    stage('Import Gold Image') {
+      steps {
+        echo 'Importing immutable infrastructure'
+        sh 'cat target/tomcat.tar | docker import - custom-tomcat'
+      }
+    }
+    stage('Provision Infrastructure') {
+      steps {
+        echo 'Provisioning tomcat servers...'
+        sh 'docker-compose up -d'
       }
     }
     stage('Build & Test') {
