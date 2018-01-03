@@ -16,7 +16,7 @@ pipeline {
     stage('SIT Tests') {
       steps {
         echo 'Running SoapUI tests...'
-        sh '/Applications/SoapUI-5.4.0.app/Contents/java/app/bin/testrunner.sh REST-Project-1-soapui-project.xml'
+        sh '/Applications/SoapUI-5.4.0.app/Contents/java/app/bin/testrunner.sh demo-soapui.xml'
       }
     }
     stage('UAT Deploy') {
