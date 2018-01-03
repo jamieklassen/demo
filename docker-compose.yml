@@ -17,4 +17,4 @@ services:
     ports:
     - "8083:8080"
     volumes:
-    - ./prod:/var/lib/tomcat7/webapps
+    - /Users/Shared/Jenkins/prod:/usr/local/tomcat/webapps
