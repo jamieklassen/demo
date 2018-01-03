@@ -1,90 +1,102 @@
-stage 'Build & Test'
-
-node {
-  try {
-    notifyBuild('STARTED')
-    echo 'Building..'
-    sh './mvnw clean package'
-  } catch (e) {
-    currentBuild.result = 'FAILED'
-    throw e
-  } finally {
-    notifyBuild(currentBuild.result)
-  }
-}
-
-stage 'SIT Deploy'
-
-node {
-  try {
-    notifyBuild('STARTED')
-    echo 'Deploying....'
-    sh 'cp target/*.war ~/sit/ROOT.war'
-  } catch (e) {
-    currentBuild.result = 'FAILED'
-    throw e
-  } finally {
-    notifyBuild(currentBuild.result)
-  }
-}
-
-stage 'SIT Tests'
-
-node {
-  try {
-    notifyBuild('STARTED')
-    echo 'Running SoapUI functional tests...'
-    sh '/Applications/SoapUI-5.4.0.app/Contents/java/app/bin/testrunner.sh demo-soapui.xml'
-  } catch (e) {
-    currentBuild.result = 'FAILED'
-    throw e
-  } finally {
-    notifyBuild(currentBuild.result)
-  }
-}
-
-stage 'UAT Deploy'
-
-node {
-  try {
-    notifyBuild('STARTED')
-    echo 'Deploying....'
-    sh 'cp target/*.war ~/uat/ROOT.war'
-  } catch (e) {
-    currentBuild.result = 'FAILED'
-    throw e
-  } finally {
-    notifyBuild(currentBuild.result)
-  }
-}
-
-stage 'Load Tests'
-
-node {
-  try {
-    notifyBuild('STARTED')
-    echo 'Running SoapUI Load Tests...'
-    sh '/Applications/SoapUI-5.4.0.app/Contents/java/app/bin/loadtestrunner.sh demo-soapui-loadtests.xml'
-  } catch (e) {
-    currentBuild.result = 'FAILED'
-    throw e
-  } finally {
-    notifyBuild(currentBuild.result)
-  }
-}
-
-stage 'Prod Deploy'
-
-node {
-  try {
-    notifyBuild('STARTED')
-    echo 'Deploying....'
-    sh 'cp target/*.war ~/prod/ROOT.war'
-  } catch (e) {
-    currentBuild.result = 'FAILED'
-    throw e
-  } finally {
-    notifyBuild(currentBuild.result)
+pipeline {
+  agent any
+  stages {
+    stage('Build & Test') {
+      steps {
+        script {
+          try {
+            notifyBuild('STARTED')
+            echo 'Building..'
+            sh './mvnw clean package'
+          } catch (e) {
+            currentBuild.result = 'FAILED'
+            throw e
+          } finally {
+            notifyBuild(currentBuild.result)
+          }
+        }
+      }
+    }
+    stage('SIT Deploy') {
+      steps {
+        script {
+          try {
+            notifyBuild('STARTED')
+            echo 'Deploying....'
+            sh 'cp target/*.war ~/sit/ROOT.war'
+          } catch (e) {
+            currentBuild.result = 'FAILED'
+            throw e
+          } finally {
+            notifyBuild(currentBuild.result)
+          }
+        }
+      }
+    }
+    stage('SIT Tests') {
+      steps {
+        script {
+          try {
+            notifyBuild('STARTED')
+            echo 'Running SoapUI functional tests...'
+            sh '/Applications/SoapUI-5.4.0.app/Contents/java/app/bin/testrunner.sh demo-soapui.xml'
+          } catch (e) {
+            currentBuild.result = 'FAILED'
+            throw e
+          } finally {
+            notifyBuild(currentBuild.result)
+          }
+        }
+      }
+    }
+    stage('UAT Deploy') {
+      steps {
+        script {
+          try {
+            notifyBuild('STARTED')
+            echo 'Deploying....'
+            sh 'cp target/*.war ~/uat/ROOT.war'
+          } catch (e) {
+            currentBuild.result = 'FAILED'
+            throw e
+          } finally {
+            notifyBuild(currentBuild.result)
+          }
+        }
+      }
+    }
+    stage('Load Tests') {
+      steps {
+        script {
+          try {
+            notifyBuild('STARTED')
+            echo 'Running SoapUI Load Tests...'
+            sh '/Applications/SoapUI-5.4.0.app/Contents/java/app/bin/loadtestrunner.sh demo-soapui-loadtests.xml'
+          } catch (e) {
+            currentBuild.result = 'FAILED'
+            throw e
+          } finally {
+            notifyBuild(currentBuild.result)
+          }
+        }
+      }
+    }
+    stage('Prod Deploy') {
+      steps {
+        script {
+          try {
+            notifyBuild('STARTED')
+            echo 'Deploying....'
+            sh 'cp target/*.war ~/prod/ROOT.war'
+          } catch (e) {
+            currentBuild.result = 'FAILED'
+            throw e
+          } finally {
+            notifyBuild(currentBuild.result)
+          }
+        }
+      }
+    }
   }
 }
 
