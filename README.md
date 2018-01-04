@@ -1,4 +1,4 @@
-# Demo
+# Sample Automated Delivery Pipeline
 ## Prerequisites
 Virtualbox and Vagrant.
 ## Setup
