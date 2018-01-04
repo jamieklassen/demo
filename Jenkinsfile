@@ -53,7 +53,7 @@ pipeline {
     stage('Load Tests') {
       steps {
         echo 'Running SoapUI Load Tests...'
-        sh '~/SoapUI-5.4.0/bin/loadtestrunner.sh demo-soapui-loadtests.xml'
+        sh '~/SoapUI-5.4.0/bin/loadtestrunner.sh -j demo-soapui-loadtests.xml'
       }
     }
     stage('Prod Deploy') {
