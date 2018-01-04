@@ -41,7 +41,7 @@ pipeline {
     stage('SIT Tests') {
       steps {
         echo 'Running SoapUI functional tests...'
-        sh '/Applications/SoapUI-5.4.0.app/Contents/java/app/bin/testrunner.sh demo-soapui.xml'
+        sh '~/SoapUI-5.4.0/bin/testrunner.sh demo-soapui.xml'
       }
     }
     stage('UAT Deploy') {
@@ -53,7 +53,7 @@ pipeline {
     stage('Load Tests') {
       steps {
         echo 'Running SoapUI Load Tests...'
-        sh '/Applications/SoapUI-5.4.0.app/Contents/java/app/bin/loadtestrunner.sh demo-soapui-loadtests.xml'
+        sh '~/SoapUI-5.4.0/bin/loadtestrunner.sh demo-soapui-loadtests.xml'
       }
     }
     stage('Prod Deploy') {
