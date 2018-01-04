@@ -9,7 +9,9 @@ pipeline {
     stage('Build Gold Image') {
       steps {
         echo 'Building immutable infrastructure...'
-        sh '/usr/local/bin/packer build tomcat.json'
+        ansiColor('xterm') {
+          sh 'packer build tomcat.json'
+        }
       }
     }
     stage('Import Gold Image') {
@@ -21,7 +23,7 @@ pipeline {
     stage('Provision Infrastructure') {
       steps {
         echo 'Provisioning tomcat servers...'
-        sh '/usr/local/bin/docker-compose up -d'
+        sh 'docker-compose up -d'
       }
     }
     stage('Build & Test') {
