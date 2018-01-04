@@ -1,33 +1,19 @@
 # Demo
-## Requirements
-- terraform CLI
-- aws CLI
-- juju CLI
-- jq
-
-## Deploy jenkins
-Ensure you have [Juju](https://jujucharms.com/) and the juju-wait plugin installed and bootstrapped
-for your infrastructure. Then you can run
+## Prerequisites
+Virtualbox and Vagrant.
+## Setup
+In the root of this repository, run
 ```
-ci/deploy_jenkins.sh
+wget https://dl.dropboxusercontent.com/s/wid54y6l85bn21j/package.box
+vagrant box add agile-coe-demo package.box
+vagrant up
 ```
+Then you can access Jenkins at http://localhost:8080. Username is `admin` and password
+is `admin`. If you run the `demo` job once, you will then have access to the following
+environments in which the sample app is deployed:
 
-## Deploy tomcat
-From the `ci/tomcat_server` directory, you should be able to run `terraform apply`. However, you
-may also need to run `packer build` and copy the resulting AMI ID into the terraform template
-first.
-
-There's a bit more work to do here in terms of automating the deployment of jenkins, the pipeline,
-and the tomcat server all together.
-TODOS:
-- add the correct GitHub server and API token to Jenkins
-- add the configuration for tomcat to Jenkins (this includes the keypair and IP)
-- make sure the IP is a known/trusted host on the Jenkins machine when provisioning
-- get the pipeline to read aforementioned configuration when SSHing
-- run through the awkward phases of creating the pipeline, running a build, then saving the
-  pipeline to trigger the configuration of the webhooks
-
-### Offline demo
-Just run `docker-compose up` to get your deployment environments stood up. Drop WAR files in
-`sit/`, `uat/` and `prod/` to deploy to those environments respectively. Run your own snowflake
-Jenkins.
+| Environment | URL                   |
+| ----------- | --------------------- |
+| Dev/SIT     | http://localhost:8081 |
+| UAT         | http://localhost:8082 |
+| Production  | http://localhost:8083 |
