@@ -41,7 +41,7 @@ pipeline {
     stage('SIT Tests') {
       steps {
         echo 'Running SoapUI functional tests...'
-        sh '~/SoapUI-5.4.0/bin/testrunner.sh demo-soapui.xml'
+        sh '~/SoapUI-5.4.0/bin/testrunner.sh -j demo-soapui.xml'
       }
     }
     stage('UAT Deploy') {
@@ -64,6 +64,9 @@ pipeline {
     }
   }
   post {
+    always {
+      junit 'TEST*.xml'
+    }
     success {
       slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
     }
