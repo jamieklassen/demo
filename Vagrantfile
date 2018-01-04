@@ -3,6 +3,7 @@
 
 Vagrant.configure("2") do |config|
   config.vm.box = "agile-coe-demo"
+  config.vm.box_url = "https://dl.dropboxusercontent.com/s/wid54y6l85bn21j/package.box"
   config.vm.base_mac = "0293061CA64F"
   config.ssh.username = "ubuntu"
   config.ssh.password = "379a8188cba8c5e64b9a429f"
