@@ -65,6 +65,7 @@ pipeline {
   }
   post {
     always {
+      junit 'target/surefire-reports/*.xml'
       junit 'TEST*.xml'
     }
     success {
