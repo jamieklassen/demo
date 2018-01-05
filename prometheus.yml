@@ -37,4 +37,7 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-      - targets: ['localhost:8081', 'localhost:8082', 'localhost:8083']
+      - targets:
+          - 'infrastructure_sit_1:8080'
+          - 'infrastructure_uat_1:8080'
+          - 'infrastructure_prod_1:8080'
