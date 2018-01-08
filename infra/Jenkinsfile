@@ -24,7 +24,6 @@ pipeline {
       steps {
         echo 'Provisioning tomcat servers...'
         sh 'docker-compose up -d'
-        sh 'docker-compose restart'
       }
     }
   }
