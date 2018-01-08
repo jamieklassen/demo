@@ -15,7 +15,7 @@ pipeline {
     stage('SIT Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'curl -T target/*.war "http://admin:admin@localhost:8081/manager/text/deploy?path=/demo&update=true"'
+        sh 'curl -f -T target/*.war "http://admin:admin@localhost:8081/manager/text/deploy?path=/demo&update=true"'
       }
     }
     stage('SIT Tests') {
@@ -27,7 +27,7 @@ pipeline {
     stage('UAT Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'curl -T target/*.war "http://admin:admin@localhost:8082/manager/text/deploy?path=/demo&update=true"'
+        sh 'curl -f -T target/*.war "http://admin:admin@localhost:8082/manager/text/deploy?path=/demo&update=true"'
       }
     }
     stage('Load Tests') {
@@ -39,7 +39,7 @@ pipeline {
     stage('Prod Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'curl -T target/*.war "http://admin:admin@localhost:8083/manager/text/deploy?path=/demo&update=true"'
+        sh 'curl -f -T target/*.war "http://admin:admin@localhost:8083/manager/text/deploy?path=/demo&update=true"'
       }
     }
   }
