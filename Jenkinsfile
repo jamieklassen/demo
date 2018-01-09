@@ -15,31 +15,31 @@ pipeline {
     stage('SIT Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'curl -f -T target/*.war "http://admin:admin@localhost:8081/manager/text/deploy?path=/demo&update=true"'
+        sh 'curl -f -T target/*.war "http://admin:admin@localhost:8081/manager/text/deploy?path=/&update=true"'
       }
     }
     stage('SIT Tests') {
       steps {
         echo 'Running SoapUI functional tests...'
-        sh '~/SoapUI-5.4.0/bin/testrunner.sh -e http://localhost:8081/demo -j demo-soapui.xml'
+        sh '~/SoapUI-5.4.0/bin/testrunner.sh -e http://localhost:8081 -j demo-soapui.xml'
       }
     }
     stage('UAT Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'curl -f -T target/*.war "http://admin:admin@localhost:8082/manager/text/deploy?path=/demo&update=true"'
+        sh 'curl -f -T target/*.war "http://admin:admin@localhost:8082/manager/text/deploy?path=/&update=true"'
       }
     }
     stage('Load Tests') {
       steps {
         echo 'Running SoapUI Load Tests...'
-        sh '~/SoapUI-5.4.0/bin/loadtestrunner.sh -e http://localhost:8082/demo demo-soapui.xml'
+        sh '~/SoapUI-5.4.0/bin/loadtestrunner.sh -e http://localhost:8082 demo-soapui.xml'
       }
     }
     stage('Prod Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'curl -f -T target/*.war "http://admin:admin@localhost:8083/manager/text/deploy?path=/demo&update=true"'
+        sh 'curl -f -T target/*.war "http://admin:admin@localhost:8083/manager/text/deploy?path=/&update=true"'
       }
     }
   }
