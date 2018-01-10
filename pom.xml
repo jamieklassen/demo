@@ -33,6 +33,7 @@
 		<prometheus.version>0.0.17</prometheus.version>
 		<endpoint>http://localhost:9000</endpoint>
 		<junitReport>false</junitReport>
+		<printReport>false</printReport>
 	</properties>
 
 	<dependencies>
@@ -97,6 +98,7 @@
 					<projectFile>demo-soapui.xml</projectFile>
 					<junitReport>${junitReport}</junitReport>
 					<endpoint>${endpoint}</endpoint>
+					<printReport>${printReport}</printReport>
 					<inputProject/>
 					<outputProject/>
 				</configuration>

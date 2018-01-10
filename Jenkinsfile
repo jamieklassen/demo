@@ -34,6 +34,8 @@ pipeline {
       steps {
         echo 'Running SoapUI Load Tests...'
         sh '~/SoapUI-5.4.0/bin/loadtestrunner.sh -r -e http://localhost:8082 demo-soapui.xml'
+        sh './mvnw soapui-pro:loadtest -Dendpoint=http://localhost:8082 -DprintReport=true'
+        perfReport '*-statistics.txt'
       }
     }
     stage('Prod Deploy') {
