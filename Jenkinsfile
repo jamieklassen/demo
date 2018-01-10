@@ -21,7 +21,7 @@ pipeline {
     stage('SIT Tests') {
       steps {
         echo 'Running SoapUI functional tests...'
-        sh '~/SoapUI-5.4.0/bin/testrunner.sh -e http://localhost:8081 -j demo-soapui.xml'
+        sh './mvnw soapui-pro:test -Dendpoint=http://localhost:8081 -DjunitReport=true'
       }
     }
     stage('UAT Deploy') {
