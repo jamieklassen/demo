@@ -33,7 +33,6 @@ pipeline {
     stage('Load Tests') {
       steps {
         echo 'Running SoapUI Load Tests...'
-        sh '~/SoapUI-5.4.0/bin/loadtestrunner.sh -r -e http://localhost:8082 demo-soapui.xml'
         sh './mvnw soapui-pro:loadtest -Dendpoint=http://localhost:8082 -DprintReport=true'
         sh 'cat *-statistics.txt | csv2html > statistics.html'
         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'statistics.html', reportName: 'Load Tests', reportTitles: ''])
