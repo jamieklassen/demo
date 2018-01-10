@@ -33,7 +33,7 @@ pipeline {
     stage('Load Tests') {
       steps {
         echo 'Running SoapUI Load Tests...'
-        sh '~/SoapUI-5.4.0/bin/loadtestrunner.sh -e http://localhost:8082 demo-soapui.xml'
+        sh '~/SoapUI-5.4.0/bin/loadtestrunner.sh -r -e http://localhost:8082 demo-soapui.xml'
       }
     }
     stage('Prod Deploy') {
