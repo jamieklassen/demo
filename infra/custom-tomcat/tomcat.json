@@ -1,0 +1,19 @@
+{
+  "builders": [{
+    "type": "docker",
+    "image": "ubuntu:trusty",
+    "export_path": "target/tomcat.tar"
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "inline": [
+      "sudo apt-get update",
+      "sudo apt-get install -y tomcat7 tomcat7-admin"
+    ]
+  },
+  {
+    "type": "file",
+    "source": "tomcat-users.xml",
+    "destination": "/etc/tomcat7/tomcat-users.xml"
+  }]
+}

@@ -4,7 +4,7 @@
 Virtualbox and Vagrant.
 
 ## Setup
-In the root of this repository, run `vagrant up`. Then you can access Jenkins at
+In the `infra/` folder, run `vagrant up`. Then you can access Jenkins at
 http://localhost:8080. The admin username is `admin` and password is `admin`. If you run
 the `infrastructure` job once, you will then have access to the following environments in which the
 sample app is deployed:
