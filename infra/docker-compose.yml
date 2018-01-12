@@ -1,15 +1,20 @@
 version: '3'
 services:
+  jenkins:
+    ports:
+    - "8080:8080"
+    image: jenkins/jenkins
   gogs:
     ports:
     - "10022:22"
     - "10080:3000"
     volumes:
-    - "/vagrant/gogs:/data"
+    - "./gogs:/data"
+    - ${GIT_DIR}:/data/git/gogs-repositories/jamie/app.git
     image: gogs/gogs
   grafana:
     ports:
-    - "3000:3000"
+    - "3030:3000"
     volumes:
     - /var/lib/grafana
     links:
