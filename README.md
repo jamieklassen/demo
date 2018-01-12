@@ -1,7 +1,8 @@
 # Sample Automated Delivery Pipeline
 
 ## Prerequisites
-Virtualbox and Vagrant.
+Virtualbox and Vagrant, plus
+[vagrant-docker-compose](https://github.com/leighmcculloch/vagrant-docker-compose).
 
 ## Setup
 In the `infra/` folder, run `vagrant up`. Then you can access Jenkins at
