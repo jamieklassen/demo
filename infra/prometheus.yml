@@ -38,6 +38,6 @@ scrape_configs:
 
     static_configs:
       - targets:
-          - 'infrastructure_sit_1:8080'
-          - 'infrastructure_uat_1:8080'
-          - 'infrastructure_prod_1:8080'
+          - 'sit:8080'
+          - 'uat:8080'
+          - 'prod:8080'
