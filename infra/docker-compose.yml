@@ -8,8 +8,6 @@ services:
     ports:
     - "10022:22"
     - "10080:3000"
-    volumes:
-    - ${GIT_DIR}:/data/git/gogs-repositories/username/app.git
     build: ./gogs
   grafana:
     ports:
