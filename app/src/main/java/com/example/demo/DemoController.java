@@ -11,7 +11,7 @@ public class DemoController {
     @RequestMapping("/")
     public @ResponseBody
     String hello(@RequestParam(required = false) String name) {
-        if (name != null) {
+        if (name == null) {
             name = "World";
         }
         return "Hello " + name + "\n";
