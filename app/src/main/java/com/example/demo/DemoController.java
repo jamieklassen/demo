@@ -8,14 +8,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class DemoController {
 
-    private String name = "World";
-
     @RequestMapping("/")
     public @ResponseBody
     String hello(@RequestParam(required = false) String name) {
         if (name != null) {
-            this.name = name;
+            name = "World";
         }
-        return "Hello " + this.name + "\n";
+        return "Hello " + name + "\n";
     }
 }

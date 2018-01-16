@@ -19,7 +19,7 @@ You will also have access to the following environments in which the sample app 
 | Production  | http://localhost:8083 |
 
 ## Git
-There is a Gogs server running. You can look at the repo at `http://localhost:10080/username/app`.
+There is a Gogs server running. You can look at the repo at http://localhost:10080/username/app.
 In a workspace directory, run
 `git clone http://username:password@localhost:10080/username/app.git`. Then if you make changes
 and run `git push`, the Jenkins build will automatically be triggered.

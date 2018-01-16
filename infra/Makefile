@@ -8,7 +8,7 @@ up:
 	docker-compose build
 	docker-compose up -d
 	git -C $(tmpdir) remote add origin http://username:password@localhost:10080/username/app.git
-	sleep 1
+	sleep 3
 	git -C $(tmpdir) push origin master
 	rm -rf $(tmpdir)
 down:
