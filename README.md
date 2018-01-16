@@ -30,3 +30,6 @@ This jenkins is preconfigured to send slack messages to https://agilecoedemo.sla
 ## Presentation Slides
 Ensure you have remarker installed (say via `npm i -g remarker`), and run `npx remarker` in the
 root of the repository. Slides should then be viewable at http://localhost:6275.
+
+## Teardown
+In the `infra/` folder, run `make down`.
