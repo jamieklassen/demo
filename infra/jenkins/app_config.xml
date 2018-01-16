@@ -11,7 +11,7 @@
       <configVersion>2</configVersion>
       <userRemoteConfigs>
         <hudson.plugins.git.UserRemoteConfig>
-          <url>http://jamie:admin@gogs:3000/jamie/app.git</url>
+          <url>http://username:password@gogs:3000/username/app.git</url>
         </hudson.plugins.git.UserRemoteConfig>
       </userRemoteConfigs>
       <branches>

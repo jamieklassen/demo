@@ -9,9 +9,8 @@ services:
     - "10022:22"
     - "10080:3000"
     volumes:
-    - "./gogs:/data"
-    - ${GIT_DIR}:/data/git/gogs-repositories/jamie/app.git
-    image: gogs/gogs
+    - ${GIT_DIR}:/data/git/gogs-repositories/username/app.git
+    build: ./gogs
   grafana:
     ports:
     - "3030:3000"
