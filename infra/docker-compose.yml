@@ -3,7 +3,7 @@ services:
   jenkins:
     ports:
     - "8080:8080"
-    image: jenkins/jenkins
+    build: ./jenkins
   gogs:
     ports:
     - "10022:22"

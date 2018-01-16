@@ -15,33 +15,31 @@ pipeline {
     stage('SIT Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'curl -f -T target/*.war "http://admin:admin@localhost:8081/manager/text/deploy?path=/&update=true"'
+        sh 'curl -f -T target/*.war "http://admin:admin@sit:8080/manager/text/deploy?path=/&update=true"'
       }
     }
     stage('SIT Tests') {
       steps {
         echo 'Running SoapUI functional tests...'
-        sh './mvnw soapui-pro:test -Dendpoint=http://localhost:8081 -DjunitReport=true'
+        sh './mvnw soapui-pro:test -Dendpoint=http://sit:8080 -DjunitReport=true'
       }
     }
     stage('UAT Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'curl -f -T target/*.war "http://admin:admin@localhost:8082/manager/text/deploy?path=/&update=true"'
+        sh 'curl -f -T target/*.war "http://admin:admin@uat:8080/manager/text/deploy?path=/&update=true"'
       }
     }
     stage('Load Tests') {
       steps {
         echo 'Running SoapUI Load Tests...'
-        sh './mvnw soapui-pro:loadtest -Dendpoint=http://localhost:8082 -DprintReport=true'
-        sh 'cat *-statistics.txt | csv2html > statistics.html'
-        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'statistics.html', reportName: 'Load Tests', reportTitles: ''])
+        sh './mvnw soapui-pro:loadtest -Dendpoint=http://uat:8080 -DprintReport=true'
       }
     }
     stage('Prod Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'curl -f -T target/*.war "http://admin:admin@localhost:8083/manager/text/deploy?path=/&update=true"'
+        sh 'curl -f -T target/*.war "http://admin:admin@prod:8080/manager/text/deploy?path=/&update=true"'
       }
     }
   }
