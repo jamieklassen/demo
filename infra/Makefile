@@ -11,6 +11,7 @@ up:
 	sleep 4
 	git -C $(tmpdir) push origin master
 	rm -rf $(tmpdir)
+	./first_build.sh
 down:
 	docker-compose down
 	rm -rf $(tmpdir)
