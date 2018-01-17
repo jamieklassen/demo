@@ -25,21 +25,32 @@ services:
     command:
     - '--config.file=/etc/prometheus/prometheus.yml'
     image: prom/prometheus
+  chef-server:
+    image: chef/chefdk
+    entrypoint:
+    - knife
+    - serve
+    - --chef-zero-host
+    - chef-server
+    - --chef-zero-port
+    - '8889'
+    volumes:
+    - ./tomcat.rb:/root/.chef/local-mode-cache/cookbooks/tomcat/recipes/default.rb
   sit:
-    build: tomcat
+    image: rastasheep/ubuntu-sshd:14.04
+    hostname: sit
     ports:
     - "8081:8080"
-    command: "/usr/lib/jvm/default-java/bin/java -Djava.util.logging.config.file=/var/lib/tomcat7/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djava.awt.headless=true -Xmx128m -XX:+UseConcMarkSweepGC -Djava.endorsed.dirs=/usr/share/tomcat7/endorsed -classpath /usr/share/tomcat7/bin/bootstrap.jar:/usr/share/tomcat7/bin/tomcat-juli.jar -Dcatalina.base=/var/lib/tomcat7 -Dcatalina.home=/usr/share/tomcat7 -Djava.io.tmpdir=/tmp/tomcat7-tomcat7-tmp org.apache.catalina.startup.Bootstrap start"
     privileged: true
   uat:
-    build: tomcat
+    image: rastasheep/ubuntu-sshd:14.04
+    hostname: uat
     ports:
     - "8082:8080"
-    command: "/usr/lib/jvm/default-java/bin/java -Djava.util.logging.config.file=/var/lib/tomcat7/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djava.awt.headless=true -Xmx128m -XX:+UseConcMarkSweepGC -Djava.endorsed.dirs=/usr/share/tomcat7/endorsed -classpath /usr/share/tomcat7/bin/bootstrap.jar:/usr/share/tomcat7/bin/tomcat-juli.jar -Dcatalina.base=/var/lib/tomcat7 -Dcatalina.home=/usr/share/tomcat7 -Djava.io.tmpdir=/tmp/tomcat7-tomcat7-tmp org.apache.catalina.startup.Bootstrap start"
     privileged: true
   prod:
-    build: tomcat
+    image: rastasheep/ubuntu-sshd:14.04
+    hostname: prod
     ports:
     - "8083:8080"
-    command: "/usr/lib/jvm/default-java/bin/java -Djava.util.logging.config.file=/var/lib/tomcat7/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djava.awt.headless=true -Xmx128m -XX:+UseConcMarkSweepGC -Djava.endorsed.dirs=/usr/share/tomcat7/endorsed -classpath /usr/share/tomcat7/bin/bootstrap.jar:/usr/share/tomcat7/bin/tomcat-juli.jar -Dcatalina.base=/var/lib/tomcat7 -Dcatalina.home=/usr/share/tomcat7 -Djava.io.tmpdir=/tmp/tomcat7-tomcat7-tmp org.apache.catalina.startup.Bootstrap start"
     privileged: true
