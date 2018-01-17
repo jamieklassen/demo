@@ -1,12 +1,12 @@
 pipeline {
   agent any
   stages {
-    stage 'Upload Cookbooks' {
+    stage('Upload Cookbooks') {
       steps {
         sh 'knife upload cookbooks --chef-repo-path .'
       }
     }
-    stage 'Bootstrap Nodes' {
+    stage('Bootstrap Nodes') {
       steps {
         parallel(
           sit: {
