@@ -1,5 +1,5 @@
 diff --git a/cookbooks/tomcat/recipes/default.rb b/cookbooks/tomcat/recipes/default.rb
-index b1a38bc..02e5868 100644
+index b1a38bc..bbf9615 100644
 --- a/cookbooks/tomcat/recipes/default.rb
 +++ b/cookbooks/tomcat/recipes/default.rb
 @@ -1,14 +1,19 @@
@@ -14,7 +14,7 @@ index b1a38bc..02e5868 100644
 +apt_package 'tomcat6-common'
 +apt_package 'tomcat6'
 +apt_package 'tomcat6-admin'
-+file '/etc/tomcat6/tomcat-users.xml' do
++file '/var/lib/tomcat6/conf/tomcat-users.xml' do
    content %{<?xml version='1.0' encoding='utf-8'?>
  <tomcat-users>
    <role rolename="manager-script"/>
