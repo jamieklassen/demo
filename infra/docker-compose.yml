@@ -26,7 +26,7 @@ services:
     - '--config.file=/etc/prometheus/prometheus.yml'
     image: prom/prometheus
   chef-server:
-    image: chef/chefdk
+    build: ./chef-server
     entrypoint:
     - knife
     - serve
@@ -34,8 +34,6 @@ services:
     - chef-server
     - --chef-zero-port
     - '8889'
-    volumes:
-    - ./tomcat.rb:/root/.chef/local-mode-cache/cookbooks/tomcat/recipes/default.rb
   sit:
     build: ./tomcat
     hostname: sit

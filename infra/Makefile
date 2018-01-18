@@ -1,4 +1,6 @@
 up:
+	docker-compose build
+	docker-compose up -d
 	./git_init.sh app
 	./git_init.sh config
 	./first_build.sh

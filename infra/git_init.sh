@@ -3,8 +3,6 @@ repo=$1
 git -C ../$repo init
 git -C ../$repo add .
 git -C ../$repo ci -m 'initial commit'
-docker-compose build
-docker-compose up -d
 git -C ../$repo remote add origin http://username:password@localhost:10080/username/$repo.git
 sleep 4
 git -C ../$repo push origin master
