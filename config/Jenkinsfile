@@ -10,13 +10,13 @@ pipeline {
       steps {
         parallel(
           sit: {
-            sh 'knife bootstrap sit -N sit -x root -P root -r tomcat'
+            sh 'knife bootstrap -y sit -N sit -x root -P root -r tomcat'
           },
           uat: {
-            sh 'knife bootstrap uat -N uat -x root -P root -r tomcat'
+            sh 'knife bootstrap -y uat -N uat -x root -P root -r tomcat'
           },
           prod: {
-            sh 'knife bootstrap prod -N prod -x root -P root -r tomcat'
+            sh 'knife bootstrap -y prod -N prod -x root -P root -r tomcat'
           }
         )
       }
