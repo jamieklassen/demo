@@ -1,0 +1,45 @@
+diff --git a/cookbooks/tomcat/recipes/default.rb b/cookbooks/tomcat/recipes/default.rb
+index b1a38bc..669572f 100644
+--- a/cookbooks/tomcat/recipes/default.rb
++++ b/cookbooks/tomcat/recipes/default.rb
+@@ -1,14 +1,12 @@
+-apt_update
+-apt_package 'tomcat7'
+-apt_package 'tomcat7-admin'
+-file '/etc/tomcat7/tomcat-users.xml' do
+-  content %{<?xml version='1.0' encoding='utf-8'?>
+-<tomcat-users>
+-  <role rolename="manager-script"/>
+-  <user username="admin" password="admin" roles="manager-script"/>
+-</tomcat-users>}
++remote_file '/root/apache-tomcat-8.5.24.tar.gz' do
++  source 'http://apache.parentingamerica.com/tomcat/tomcat-8/v8.5.24/bin/apache-tomcat-8.5.24.tar.gz'
+ end
++execute 'unzip tomcat' do
++  command 'tar -xzvf apache-tomcat-8.5.24.tar.gz && mv apache-tomcat-8.5.24 /opt/tomcat'
++  cwd '/root'
++end
++execute 'cp -rf /var/lib/tomcat7/webapps/* /opt/tomcat/webapps/'
+ service 'tomcat7' do
+-  action :start
++  action :stop
+ end
+-execute 'chown -R tomcat7:tomcat7 /var/lib/tomcat7/webapps'
++execute '/opt/tomcat/bin/startup.sh'
+diff --git a/cookbooks/tomcat/recipes/deploy.rb b/cookbooks/tomcat/recipes/deploy.rb
+index ee2a540..238d1f7 100644
+--- a/cookbooks/tomcat/recipes/deploy.rb
++++ b/cookbooks/tomcat/recipes/deploy.rb
+@@ -1,10 +1,7 @@
+-directory '/var/lib/tomcat7/webapps/ROOT' do
++directory '/opt/tomcat/webapps/ROOT' do
+   action :delete
+   recursive true
+ end
+-remote_file '/var/lib/tomcat7/webapps/ROOT.war' do
++remote_file '/opt/tomcat/webapps/ROOT.war' do
+   source 'http://admin:admin@artifactory:8081/artifactory/generic-local/app.war'
+ end
+-service 'tomcat7' do
+-  action :restart
+-end

@@ -21,7 +21,7 @@ pipeline {
     stage('SIT Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'curl -f -T target/*.war "http://admin:admin@sit:8080/manager/text/deploy?path=/&update=true"'
+	sh 'knife bootstrap -y sit -N sit -x root -P root -r tomcat::deploy'
       }
     }
     stage('SIT Tests') {
@@ -33,7 +33,7 @@ pipeline {
     stage('UAT Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'curl -f -T target/*.war "http://admin:admin@uat:8080/manager/text/deploy?path=/&update=true"'
+	sh 'knife bootstrap -y uat -N uat -x root -P root -r tomcat::deploy'
       }
     }
     stage('Load Tests') {
@@ -45,7 +45,7 @@ pipeline {
     stage('Prod Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'curl -f -T target/*.war "http://admin:admin@prod:8080/manager/text/deploy?path=/&update=true"'
+	sh 'knife bootstrap -y prod -N prod -x root -P root -r tomcat::deploy'
       }
     }
   }
