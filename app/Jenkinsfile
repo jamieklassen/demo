@@ -12,6 +12,12 @@ pipeline {
         sh './mvnw clean package'
       }
     }
+    stage('Publish Build') {
+      steps {
+        echo 'Publishing to Artifactory...'
+        sh 'curl -f -u admin:admin -T target/*.war "http://artifactory:8081/artifactory/generic-local/app.war"'
+      }
+    }
     stage('SIT Deploy') {
       steps {
         echo 'Deploying....'
