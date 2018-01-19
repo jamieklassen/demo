@@ -14,11 +14,9 @@ services:
   grafana:
     ports:
     - "3030:3000"
-    volumes:
-    - /var/lib/grafana
+    build: ./grafana
     links:
     - prometheus
-    image: grafana/grafana
   prometheus:
     ports:
     - "9090:9090"
