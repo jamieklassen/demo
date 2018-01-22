@@ -38,3 +38,7 @@ root of the repository. Slides should then be viewable at http://localhost:6275.
 
 ## Teardown
 In the `infra/` folder, run `make down`.
+
+## Architecture
+The below diagram describes the various players in the demo:
+![./sequence-diagram.svg](./sequence-diagram.svg)
