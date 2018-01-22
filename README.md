@@ -4,7 +4,12 @@
 Docker-compose.
 
 ## Setup
-In the `infra/` folder, run `make up`
+In the `infra/` folder, run `make up`. Note that for links between Jenkins and Sonarqube to 
+work properly, you will likely have to add a line like
+```
+127.0.0.1	sonarqube
+```
+to your `/etc/hosts` file (at least on Mac).
 
 ## Jenkins
 You can access Jenkins at http://localhost:8080

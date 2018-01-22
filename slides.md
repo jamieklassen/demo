@@ -92,12 +92,6 @@ http://localhost:10080/username/config
 
 ---
 
-# Artifacts
-
-http://localhost:9000/artifactory/webapp/#/artifacts/browse/tree/General/generic-local
-
----
-
 # Demo Deploy
 
 http://localhost:8080/job/app/build
@@ -112,6 +106,18 @@ http://localhost:8080/blue/organizations/jenkins/app/detail/app/1/pipeline
 | Dev/SIT     | http://localhost:8081 |
 | UAT         | http://localhost:8082 |
 | Production  | http://localhost:8083 |
+
+---
+
+# Artifacts
+
+http://localhost:9001/artifactory/webapp/#/artifacts/browse/tree/General/generic-local
+
+---
+
+# Static Code Analysis
+
+http://localhost:9000/dashboard?id=com.example%3Ademo
 
 ---
 

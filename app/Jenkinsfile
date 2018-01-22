@@ -9,7 +9,9 @@ pipeline {
     stage('Build & Test') {
       steps {
         echo 'Building..'
-        sh './mvnw clean package'
+        withSonarQubeEnv('sonarqube') {
+          sh './mvnw clean package sonar:sonar'
+        }
       }
     }
     stage('Publish Build') {

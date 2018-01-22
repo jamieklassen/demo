@@ -1,4 +1,10 @@
 #!/bin/bash
+# wait for gogs to be up
+false
+while [ "$?" != "0" ]; do
+  sleep 1
+  curl -f localhost:10080
+done
 repo=$1
 git -C ../$repo init
 git -C ../$repo add .

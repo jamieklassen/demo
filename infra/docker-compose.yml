@@ -12,7 +12,11 @@ services:
   artifactory:
     build: ./artifactory
     ports:
-    - "9000:8081"
+    - "9001:8081"
+  sonarqube:
+    image: sonarqube
+    ports:
+    - "9000:9000"
   grafana:
     ports:
     - "3030:3000"
