@@ -1,31 +1,30 @@
-Title: Demo Pipeline
 User->Gogs: pushes code
 Gogs-->Jenkins: sends webhook
 Gogs->Jenkins: clones repo
 Note over Jenkins: builds artifact,\nruns tests,\nanalyzes code
 Jenkins->SonarQube: uploads analysis
 Jenkins->Artifactory: uploads artifact
-Jenkins-->SIT Server: triggers deploy recipe
-Chef Server-->SIT Server: pulls deploy recipe
-Artifactory->SIT Server: downloads artifact
-Note over SIT Server: deploys app
-Jenkins->SIT Server: runs SoapUI functional tests
-Jenkins-->UAT Server: triggers deploy recipe
-Chef Server-->UAT Server: pulls deploy recipe
-Artifactory->UAT Server: downloads artifact
-Note over UAT Server: deploys app
-Jenkins->UAT Server: runs SoapUI load tests
-Jenkins-->Production Server: triggers deploy recipe
-Chef Server-->Production Server: pulls deploy recipe
-Artifactory->Production Server: downloads artifact
-Note over Production Server: deploys app
-SIT Server->Prometheus: scrapes metrics
-UAT Server->Prometheus: scrapes metrics
-Production Server->Prometheus: scrapes metrics
+Jenkins-->SIT: triggers deploy recipe
+Chef Server-->SIT: pulls deploy recipe
+Artifactory->SIT: downloads artifact
+Note over SIT: deploys app
+Jenkins->SIT: runs SoapUI functional tests
+Jenkins-->UAT: triggers deploy recipe
+Chef Server-->UAT: pulls deploy recipe
+Artifactory->UAT: downloads artifact
+Note over UAT: deploys app
+Jenkins->UAT: runs SoapUI load tests
+Jenkins-->Production: triggers deploy recipe
+Chef Server-->Production: pulls deploy recipe
+Artifactory->Production: downloads artifact
+Note over Production: deploys app
+SIT->Prometheus: scrapes metrics
+UAT->Prometheus: scrapes metrics
+Production->Prometheus: scrapes metrics
 Prometheus->Grafana: pulls and displays data
 Jenkins->User: views build logs
 SonarQube->User: views analysis reports
-SIT Server->User: accesses app
-UAT Server->User: accesses app
-Production Server->User: accesses app
+SIT->User: accesses app
+UAT->User: accesses app
+Production->User: accesses app
 Grafana->User: views data
