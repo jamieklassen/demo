@@ -77,3 +77,69 @@ pipeline {
 1. pipeline automatically triggers UAT deploy **seconds**
 1. pipeline performs automated acceptance tests **seconds**
 1. pipeline automatically triggers production deploy **seconds**
+
+---
+
+# Code
+
+## App - Spring Boot Web Service
+
+http://localhost:10080/username/app
+
+## Config - Chef Repository
+
+http://localhost:10080/username/config
+
+---
+
+# Artifacts
+
+http://localhost:9000/artifactory/webapp/#/artifacts/browse/tree/General/generic-local
+
+---
+
+# Demo Deploy
+
+http://localhost:8080/job/app/build
+http://localhost:8080/blue/organizations/jenkins/app/detail/app/1/pipeline
+
+---
+
+# Environments
+
+| Environment | URL                   |
+| ----------- | --------------------- |
+| Dev/SIT     | http://localhost:8081 |
+| UAT         | http://localhost:8082 |
+| Production  | http://localhost:8083 |
+
+---
+
+# Demo Infrastructure
+
+```bash
+git clone \
+  http://username:password@localhost:10080/username/config.git
+```
+
+---
+
+# Demo Slack Ops
+
+Add a failing test, watch the slack notification and pipeline go red
+http://agilecoedemo.slack.com
+
+---
+
+# Demo Feature Change
+
+```bash
+git clone \
+  http://username:password@localhost:10080/username/app.git
+```
+
+---
+
+# Demo Monitoring
+
+http://localhost:3030/dashboard/db/jvm-overview-prometheus

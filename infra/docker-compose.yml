@@ -11,6 +11,8 @@ services:
     build: ./gogs
   artifactory:
     build: ./artifactory
+    ports:
+    - "9000:8081"
   grafana:
     ports:
     - "3030:3000"
