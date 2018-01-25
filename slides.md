@@ -45,6 +45,7 @@
 
 - pre-approved scripts instead of scheduled manual builds and deploys
 - pre-approved test suites instead of manual QA tasks and signoffs
+    - don't be afraid: you can still have manual signoffs on every single build
 - version control as a single source of truth
 - steps orchestrated in a pipeline
 ```groovy
@@ -82,6 +83,7 @@ pipeline {
 
 # Code
 
+why two repositories? who is responsible for what?
 ## [App - Spring Boot Web Service](http://localhost:10080/username/app)
 ## [Config - Chef Repository](http://localhost:10080/username/config)
 
@@ -89,8 +91,11 @@ pipeline {
 
 # Demo Deploy
 
+[Config Pipeline](http://localhost:8080/blue/organizations/jenkins/config/detail/config/1/pipeline/)
+
 [New Build](http://localhost:8080/job/app/build)
-[Pipeline View](http://localhost:8080/blue/organizations/jenkins/app/detail/app/1/pipeline)
+
+[App Pipeline](http://localhost:8080/blue/organizations/jenkins/app/detail/app/1/pipeline)
 
 ---
 
@@ -103,6 +108,7 @@ pipeline {
 ---
 
 # [Artifacts](http://localhost:9001/artifactory/webapp/#/artifacts/browse/tree/General/generic-local)
+use artifactory for dependencies
 
 ---
 
@@ -116,6 +122,13 @@ pipeline {
 git clone \
   http://username:password@localhost:10080/username/config.git
 ```
+i have infrastructure-as-code
+- it's good because
+
+i have an automation pipeline for IaC
+- it's good because
+
+some way to prove that i upgraded tomcat and the same apps are deployed?
 
 ---
 
