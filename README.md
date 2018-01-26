@@ -4,7 +4,7 @@
 Docker-compose.
 
 ## Setup
-In the `infra/` folder, run `make up`. Note that for links between Jenkins and Sonarqube to 
+Run `make up`. Note that for links between Jenkins and Sonarqube to 
 work properly, you will likely have to add a line like
 ```
 127.0.0.1	sonarqube
