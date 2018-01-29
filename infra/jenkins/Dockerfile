@@ -14,4 +14,6 @@ COPY config_config.groovy /var/jenkins_home/init.groovy.d/config_config.groovy
 COPY knife.rb /var/jenkins_home/.chef/knife.rb
 COPY validator.pem /var/jenkins_home/.chef/.pem
 USER root
+COPY app /tmp/app
+RUN cd /tmp/app && ./mvnw package
 RUN curl -L https://omnitruck.chef.io/install.sh | bash

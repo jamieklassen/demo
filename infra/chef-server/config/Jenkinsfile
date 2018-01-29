@@ -1,0 +1,25 @@
+pipeline {
+  agent any
+  stages {
+    stage('Upload Cookbooks') {
+      steps {
+        sh 'knife upload cookbooks --chef-repo-path .'
+      }
+    }
+    stage('Bootstrap Nodes') {
+      steps {
+        parallel(
+          sit: {
+            sh 'knife bootstrap -y sit -N sit -x root -P root -r tomcat'
+          },
+          uat: {
+            sh 'knife bootstrap -y uat -N uat -x root -P root -r tomcat'
+          },
+          prod: {
+            sh 'knife bootstrap -y prod -N prod -x root -P root -r tomcat'
+          }
+        )
+      }
+    }
+  }
+}

@@ -46,10 +46,10 @@ services:
     ports:
     - "8081:8080"
     privileged: true
-    environment:
-    - SPRING_DATASOURCE_URL=jdbc:postgresql://sit_db:5432/data
   sit_db:
     image: postgres
+    ports:
+    - "5432:5432"
     environment:
     - POSTGRES_DB=data
     - POSTGRES_USER=postgres
@@ -60,8 +60,6 @@ services:
     ports:
     - "8082:8080"
     privileged: true
-    environment:
-    - SPRING_DATASOURCE_URL=jdbc:postgresql://uat_db:5432/data
   uat_db:
     image: postgres
     environment:
@@ -74,8 +72,6 @@ services:
     ports:
     - "8083:8080"
     privileged: true
-    environment:
-    - SPRING_DATASOURCE_URL=jdbc:postgresql://prod_db:5432/data
   prod_db:
     image: postgres
     environment:

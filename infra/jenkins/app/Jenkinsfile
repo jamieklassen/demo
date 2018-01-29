@@ -1,0 +1,66 @@
+pipeline {
+  agent any
+  stages {
+    stage('Start') {
+      steps {
+        slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}console)")
+      }
+    }
+    stage('Build & Test') {
+      steps {
+        echo 'Building..'
+        withSonarQubeEnv('sonarqube') {
+          sh './mvnw clean package sonar:sonar'
+        }
+      }
+    }
+    stage('Publish Build') {
+      steps {
+        echo 'Publishing to Artifactory...'
+        sh 'curl -f -u admin:admin -T target/*.war "http://artifactory:8081/artifactory/generic-local/app.war"'
+      }
+    }
+    stage('SIT Deploy') {
+      steps {
+        echo 'Deploying....'
+	sh 'knife bootstrap -y sit -N sit -x root -P root -r tomcat::deploy'
+      }
+    }
+    stage('SIT Tests') {
+      steps {
+        echo 'Running SoapUI functional tests...'
+        sh './mvnw soapui-pro:test -Dendpoint=http://sit:8080 -DjunitReport=true'
+      }
+    }
+    stage('UAT Deploy') {
+      steps {
+        echo 'Deploying....'
+	sh 'knife bootstrap -y uat -N uat -x root -P root -r tomcat::deploy'
+      }
+    }
+    stage('Load Tests') {
+      steps {
+        echo 'Running SoapUI Load Tests...'
+        sh './mvnw soapui-pro:loadtest -Dendpoint=http://uat:8080 -DprintReport=true'
+      }
+    }
+    stage('Prod Deploy') {
+      steps {
+        echo 'Deploying....'
+	sh 'knife bootstrap -y prod -N prod -x root -P root -r tomcat::deploy'
+      }
+    }
+  }
+  post {
+    always {
+      junit 'target/surefire-reports/*.xml'
+      junit 'TEST*.xml'
+    }
+    success {
+      slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+    }
+    failure {
+      slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+    }
+  }
+}
