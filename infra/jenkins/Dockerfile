@@ -15,5 +15,8 @@ COPY knife.rb /var/jenkins_home/.chef/knife.rb
 COPY validator.pem /var/jenkins_home/.chef/.pem
 USER root
 COPY app /tmp/app
-RUN cd /tmp/app && ./mvnw package
+RUN cd /tmp/app && ./mvnw package; \
+  ./mvnw sonar:sonar; \
+  ./mvnw soapui-pro:test; \
+  ./mvnw soapui-pro:loadtest || true
 RUN curl -L https://omnitruck.chef.io/install.sh | bash
