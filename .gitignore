@@ -7,6 +7,7 @@ soapui.log
 soapui-errors.log
 global-groovy.log
 .DS_Store
+*.war
 
 ### STS ###
 .apt_generated

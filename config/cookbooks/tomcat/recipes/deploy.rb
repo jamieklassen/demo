@@ -8,3 +8,8 @@ end
 service 'tomcat7' do
   action :restart
 end
+ruby_block 'wait for tomcat' do
+  block do
+    true until ::File.exists?('/var/lib/tomcat7/webapps/ROOT/WEB-INF/classes/application.properties')
+  end
+end

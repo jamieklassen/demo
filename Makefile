@@ -10,6 +10,7 @@ start_containers:
 	docker exec -it infra_uat_1 service tomcat7 start
 	docker exec -it infra_prod_1 service tomcat7 start
 setup_db_urls:
+	docker exec -it infra_sit_1 bash -c "while [ ! -d /var/lib/tomcat7/webapps/ROOT/WEB-INF/classes ]; do sleep 1; done"
 	docker exec -it infra_sit_1 bash -c "echo 'spring.datasource.url=jdbc:postgresql://sit_db:5432/data' >> /var/lib/tomcat7/webapps/ROOT/WEB-INF/classes/application.properties && service tomcat7 restart"
 	docker exec -it infra_uat_1 bash -c "echo 'spring.datasource.url=jdbc:postgresql://uat_db:5432/data' >> /var/lib/tomcat7/webapps/ROOT/WEB-INF/classes/application.properties && service tomcat7 restart"
 	docker exec -it infra_prod_1 bash -c "echo 'spring.datasource.url=jdbc:postgresql://prod_db:5432/data' >> /var/lib/tomcat7/webapps/ROOT/WEB-INF/classes/application.properties && service tomcat7 restart"

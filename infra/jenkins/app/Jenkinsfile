@@ -23,7 +23,7 @@ pipeline {
     stage('SIT Deploy') {
       steps {
         echo 'Deploying....'
-	sh 'knife bootstrap -y sit -N sit -x root -P root -r tomcat::deploy'
+	sh 'knife bootstrap -y sit -N sit -x root -P root -r tomcat::deploy,tomcat::sit'
       }
     }
     stage('SIT Tests') {
@@ -35,7 +35,7 @@ pipeline {
     stage('UAT Deploy') {
       steps {
         echo 'Deploying....'
-	sh 'knife bootstrap -y uat -N uat -x root -P root -r tomcat::deploy'
+	sh 'knife bootstrap -y uat -N uat -x root -P root -r tomcat::deploy,tomcat::uat'
       }
     }
     stage('Load Tests') {
@@ -47,7 +47,7 @@ pipeline {
     stage('Prod Deploy') {
       steps {
         echo 'Deploying....'
-	sh 'knife bootstrap -y prod -N prod -x root -P root -r tomcat::deploy'
+	sh 'knife bootstrap -y prod -N prod -x root -P root -r tomcat::deploy,tomcat::prod'
       }
     }
   }

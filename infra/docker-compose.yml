@@ -40,6 +40,8 @@ services:
     - chef-server
     - --chef-zero-port
     - '8889'
+    - --chef-repo-path
+    - /root/.chef/local-mode-cache
   sit:
     build: ./tomcat
     hostname: sit
