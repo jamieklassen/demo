@@ -15,15 +15,11 @@ setup_db_urls:
 	docker exec -it infra_uat_1 bash -c "echo 'spring.datasource.url=jdbc:postgresql://uat_db:5432/data' >> /var/lib/tomcat7/webapps/ROOT/WEB-INF/classes/application.properties && service tomcat7 restart"
 	docker exec -it infra_prod_1 bash -c "echo 'spring.datasource.url=jdbc:postgresql://prod_db:5432/data' >> /var/lib/tomcat7/webapps/ROOT/WEB-INF/classes/application.properties && service tomcat7 restart"
 build_app:
-	if [ -f infra/tomcat/demo-0.0.1-SNAPSHOT.war ]; then \
-	echo "app already built"; \
-	else \
-	pushd app && ./mvnw package -Dmaven.test.skip=true && popd; \
-	fi
+	pushd app && ./mvnw package -Dmaven.test.skip=true && popd
 git_init:
 	infra/git_init.sh app
 	infra/git_init.sh config
-up: build_app start_containers git_init setup_db_urls
+up: start_containers git_init setup_db_urls
 down:
 	docker-compose -f infra/docker-compose.yml down
 clean:

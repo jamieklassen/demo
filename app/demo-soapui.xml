@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="95bd78af-7472-4386-8740-ba1780b3b495" activeEnvironment="Default" name="REST Project 1"
-					resourceRoot="" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL"
-					xmlns:con="http://eviware.com/soapui/config">
+<con:soapui-project id="95bd78af-7472-4386-8740-ba1780b3b495" activeEnvironment="Default" name="REST Project 1" resourceRoot="" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config">
 	<con:settings>
-		<con:setting id="com.eviware.soapui.impl.wsdl.actions.iface.tools.soapui.TestRunnerAction@values-local">
-			<![CDATA[<xml-fragment xmlns:con="http://eviware.com/soapui/config">
+		<con:setting id="com.eviware.soapui.impl.wsdl.actions.iface.tools.soapui.TestRunnerAction@values-local"><![CDATA[<xml-fragment xmlns:con="http://eviware.com/soapui/config">
   <con:entry key="Report Format(s)" value=""/>
   <con:entry key="Host:Port" value=""/>
   <con:entry key="Export JUnit Results" value="false"/>
@@ -12,7 +9,7 @@
   <con:entry key="Save After" value="false"/>
   <con:entry key="Add Settings" value="false"/>
   <con:entry key="WSS Password Type" value=""/>
-  <con:entry key="TestSuite" value="&lt;all>"/>
+  <con:entry key="TestSuite" value="StocksCRUDTests"/>
   <con:entry key="Endpoint" value=""/>
   <con:entry key="Select Report Type" value=""/>
   <con:entry key="System Properties" value=""/>
@@ -23,7 +20,7 @@
   <con:entry key="Global Properties" value=""/>
   <con:entry key="Project Properties" value=""/>
   <con:entry key="Project Password" value=""/>
-  <con:entry key="TestCase" value="&lt;all>"/>
+  <con:entry key="TestCase" value="PersistenceTestCase"/>
   <con:entry key="Username" value=""/>
   <con:entry key="user-settings.xml Password" value=""/>
   <con:entry key="TestRunner Path" value=""/>
@@ -36,8 +33,8 @@
   <con:entry key="Tool Args" value=""/>
   <con:entry key="Save Project" value="false"/>
 </xml-fragment>]]></con:setting>
-		<con:setting id="com.eviware.soapui.impl.wsdl.actions.iface.tools.soapui.LoadTestRunnerAction@values-local">
-			<![CDATA[<xml-fragment xmlns:con="http://eviware.com/soapui/config">
+		<con:setting id="com.eviware.soapui.impl.wsdl.actions.iface.tools.soapui.LoadTestRunnerAction@values-local"><![CDATA[
+			<xml-fragment xmlns:con="http://eviware.com/soapui/config">
   <con:entry key="Print Report Statistics" value="false"/>
   <con:entry key="Report Format(s)" value=""/>
   <con:entry key="Host:Port" value=""/>
@@ -67,15 +64,13 @@
   <con:entry key="Save Project" value="false"/>
 </xml-fragment>]]></con:setting>
 	</con:settings>
-	<con:interface xsi:type="con:RestService" id="a333a7fb-97b9-43a8-8b52-87f58518c059"
-				   wadlVersion="http://wadl.dev.java.net/2009/02" name="localhost" type="rest"
-				   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<con:interface xsi:type="con:RestService" id="a333a7fb-97b9-43a8-8b52-87f58518c059" wadlVersion="http://wadl.dev.java.net/2009/02" name="localhost" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 		<con:settings/>
-		<con:definitionCache type="TEXT" rootPart=""/>
-		<con:resource name="Demo-0.0.1-SNAPSHOT" path="/" id="a89e97a2-3cfa-471c-9445-cb2b49e70524">
+		
+		<con:definitionCache type="TEXT" rootPart=""/><con:endpoints/><con:resource name="Stock Endpoint" path="/stocks/{id}" id="a89e97a2-3cfa-471c-9445-cb2b49e70524">
 			<con:settings/>
-			<con:parameters/>
-			<con:method name="Demo-0.0.1-SNAPSHOT 1" id="9ca1a126-0322-47dc-b675-0637cb2c7d8a" method="GET">
+			<con:parameters><con:parameter required="true"><con:name>id</con:name><con:value/><con:style>TEMPLATE</con:style><con:default/><con:description xsi:nil="true"/></con:parameter></con:parameters>
+			<con:method name="Get Stock" id="9ca1a126-0322-47dc-b675-0637cb2c7d8a" method="GET">
 				<con:settings/>
 				<con:parameters/>
 				<con:representation type="RESPONSE">
@@ -84,10 +79,9 @@
 					<con:params/>
 					<con:element>data</con:element>
 				</con:representation>
-				<con:request name="Request 1" id="4acfeb86-23ea-4b40-8da0-11f3ebdff1fa" mediaType="application/json">
+				<con:representation type="RESPONSE"><con:mediaType>application/hal+json;charset=UTF-8</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:stoc="http://localhost/stocks">stoc:Response</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>400</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Specific Stock" id="4acfeb86-23ea-4b40-8da0-11f3ebdff1fa" mediaType="application/json">
 					<con:settings>
-						<con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
-						</con:setting>
+						<con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
 					</con:settings>
 					<con:request/>
 					<con:credentials>
@@ -95,45 +89,41 @@
 					</con:credentials>
 					<con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
 					<con:jmsPropertyConfig/>
-					<con:parameters/>
-				</con:request>
+					<con:parameters><entry key="id" value="-1" xmlns="http://eviware.com/soapui/config"/></con:parameters>
+				<con:parameterOrder><con:entry>id</con:entry></con:parameterOrder></con:request>
 			</con:method>
-		</con:resource>
-	</con:interface>
-	<con:testSuite id="ff5d6d25-6b65-4873-af2e-1f99eaf82271" name="TestSuite 1">
+		<con:method name="Delete Stock" id="f2350b24-21e1-4d82-acbd-b62121c3ba1e" method="DELETE"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:request name="Specific Stock" id="ca005473-3bc6-4257-ab35-111aa1ee4104" mediaType="application/json" postQueryString="false"><con:settings/><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource>
+	<con:resource name="stocks" path="/stocks" id="5100f836-9e86-485c-86fb-09c4576cb418"><con:settings/><con:parameters/><con:method name="Create Stock" id="aef6c2a5-c067-4b25-b490-c1168050080b" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>201</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>201</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>201</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>201</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Test Stock" id="2a60720b-6faa-4cd0-b816-e494a7c75089" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:request>{"name": "Test Stock", "value": 100}</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:interface>
+	<con:testSuite id="ff5d6d25-6b65-4873-af2e-1f99eaf82271" name="StocksCRUDTests">
 		<con:settings/>
 		<con:runType>SEQUENTIAL</con:runType>
-		<con:testCase id="a5a41a27-8025-463d-ae46-5b8a002c4d4b" failOnError="true" failTestCaseOnErrors="true"
-					  keepSession="false" maxResults="0" name="TestCase 1" searchProperties="true">
+		<con:testCase id="a5a41a27-8025-463d-ae46-5b8a002c4d4b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="PersistenceTestCase" searchProperties="true">
 			<con:settings/>
-			<con:testStep type="restrequest" name="Say hello with default name"
-						  id="37fe8259-436b-439a-9257-6cba0e557509">
+			<con:testStep type="properties" name="Property" id="f1bea98c-621e-4fd4-8d7d-a7cc3c2c0418"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>id</con:name><con:value>10</con:value></con:property></con:properties></con:config></con:testStep>
+			<con:testStep type="restrequest" name="Create Test Stock" id="4569e107-f73a-4bac-bb25-b497a615d3de"><con:settings/><con:config service="localhost" resourcePath="/stocks" methodName="Create Stock" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Create Test Stock" id="2a60720b-6faa-4cd0-b816-e494a7c75089" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8081</con:endpoint><con:request>{"name": "Test Stock", "value": 100}</con:request><con:originalUri>http://localhost/stocks</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="57fe0322-9966-463f-b011-63a14ea8193b" name="Valid HTTP Status Codes"><con:configuration><codes>201</codes></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="groovy" name="Read Location Header" id="73476029-3550-4450-b727-643f12101751"><con:settings/><con:config><script>//Takes one of the elements of the response Header
+def locationHeader = testRunner.testCase.testSteps["Create Test Stock"].testRequest.response.responseHeaders["Location"][0]
+def newStockId = (locationHeader =~ /\d+$/)[0]
+
+//Read this value into a parameter
+def groovyUtils = new com.eviware.soapui.support.GroovyUtils( context )
+groovyUtils.setPropertyValue("Property", "id", newStockId.toString())</script></con:config></con:testStep><con:testStep type="restrequest" name="Get test stock" id="37fe8259-436b-439a-9257-6cba0e557509">
 				<con:settings/>
-				<con:config service="localhost" resourcePath="/" methodName="Demo-0.0.1-SNAPSHOT 1"
-							xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-					<con:restRequest name="Demo-0.0.1-SNAPSHOT 1 - Request 1" id="4acfeb86-23ea-4b40-8da0-11f3ebdff1fa"
-									 mediaType="application/json">
+				<con:config service="localhost" resourcePath="/stocks/{id}" methodName="Get Stock" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+					<con:restRequest name="Say hello with default name" id="4acfeb86-23ea-4b40-8da0-11f3ebdff1fa" mediaType="application/json">
 						<con:settings>
 							<con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
 						</con:settings>
-						<con:request/>
-						<con:assertion type="Simple Contains" id="08e19949-3c23-49ef-aa73-8eca58934f1e" name="Contains">
-							<con:configuration>
-								<token>Hello World</token>
-								<ignoreCase>false</ignoreCase>
-								<useRegEx>false</useRegEx>
-							</con:configuration>
-						</con:assertion>
-						<con:credentials>
+						<con:endpoint>http://localhost:8081</con:endpoint><con:request/>
+						<con:originalUri>http://localhost/stocks</con:originalUri>
+						<con:assertion type="Valid HTTP Status Codes" id="f217ea00-9ada-46a3-b13b-1d47b34b9baf" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:credentials>
 							<con:authType>No Authorization</con:authType>
 						</con:credentials>
 						<con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
 						<con:jmsPropertyConfig/>
-						<con:parameters/>
-					</con:restRequest>
+						<con:parameters><entry key="id" value="${Property#id}" xmlns="http://eviware.com/soapui/config"/></con:parameters>
+					<con:parameterOrder><con:entry>id</con:entry></con:parameterOrder></con:restRequest>
 				</con:config>
-			</con:testStep>
-			<con:loadTest id="dea43d44-3e7e-4051-938c-f2c08c96ec64" name="LoadTest 1">
+			</con:testStep><con:testStep type="restrequest" name="Clean up test stock" id="9280d9bd-df46-4438-bfc3-a83a5fe7a2c3"><con:settings/><con:config service="localhost" resourcePath="/stocks/{id}" methodName="Delete Stock" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Clean up test stock" id="ca005473-3bc6-4257-ab35-111aa1ee4104" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8081</con:endpoint><con:request/><con:originalUri>http://localhost/stocks/10</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="d7cf5e9f-1b6d-4274-bfa1-e5da546fefe8" name="Valid HTTP Status Codes"><con:configuration><codes>204</codes></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="id" value="${Property#id}" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:loadTest id="dea43d44-3e7e-4051-938c-f2c08c96ec64" name="LoadTest 1">
 				<con:settings>
 					<con:setting id="HttpSettings@close-connections">false</con:setting>
 				</con:settings>

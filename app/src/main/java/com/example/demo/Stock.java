@@ -8,8 +8,8 @@ import javax.persistence.*;
 @Data
 public class Stock {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int value;
+    private Integer value;
     private String name;
 }

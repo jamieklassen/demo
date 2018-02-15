@@ -8,6 +8,7 @@ soapui-errors.log
 global-groovy.log
 .DS_Store
 *.war
+infra/jenkins/app/*
 
 ### STS ###
 .apt_generated

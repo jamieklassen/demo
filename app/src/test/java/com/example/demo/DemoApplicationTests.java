@@ -16,10 +16,4 @@ public class DemoApplicationTests {
     @Test
     public void contextLoads() {
     }
-
-    @Test
-    public void shouldFail() {
-        assertEquals(1, 1);
-    }
-
 }
