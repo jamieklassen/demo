@@ -12,24 +12,28 @@ pipeline {
         withSonarQubeEnv('sonarqube') {
           sh './mvnw clean package sonar:sonar'
         }
+        input(message: 'Continue?')
       }
     }
     stage('Publish Build') {
       steps {
         echo 'Publishing to Artifactory...'
         sh 'curl -f -u admin:admin -T target/*.war "http://artifactory:8081/artifactory/generic-local/app.war"'
+        input(message: 'Continue?')
       }
     }
     stage('SIT Deploy') {
       steps {
         echo 'Deploying....'
 	sh 'knife bootstrap -y sit -N sit -x root -P root -r tomcat::deploy,tomcat::sit'
+        input(message: 'Continue?')
       }
     }
     stage('SIT Tests') {
       steps {
         echo 'Running SoapUI functional tests...'
         sh './mvnw soapui-pro:test -Dendpoint=http://sit:8080 -DjunitReport=true'
+        input(message: 'Continue?')
       }
     }
     stage('UAT Deploy') {
