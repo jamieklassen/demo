@@ -1,5 +1,5 @@
 CREATE TABLE stock (
   id bigserial,
-  value int,
-  name varchar
+  price int,
+  symbol varchar
 )
