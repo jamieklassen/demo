@@ -15,13 +15,11 @@ import java.util.Collection;
 
 @Configuration
 class MonitoringConfig {
-    @Autowired
-    private DataSource dataSource;
-
+   
     @Bean
-    Flyway flyway() {
+    Flyway flyway(DataSource dataSource) {
         Flyway flyway = new Flyway();
-        flyway.setDataSource(this.dataSource);
+        flyway.setDataSource(dataSource);
         flyway.migrate();
         return flyway;
     }
