@@ -1,39 +1,30 @@
 pipeline {
   agent any
   stages {
-    stage('Start') {
-      steps {
-        slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}console)")
-      }
-    }
     stage('Build & Test') {
       steps {
         echo 'Building..'
         withSonarQubeEnv('sonarqube') {
           sh './mvnw clean package sonar:sonar'
         }
-        input(message: 'Continue?')
       }
     }
     stage('Publish Build') {
       steps {
         echo 'Publishing to Artifactory...'
         sh 'curl -f -u admin:admin -T target/*.war "http://artifactory:8081/artifactory/generic-local/app.war"'
-        input(message: 'Continue?')
       }
     }
     stage('SIT Deploy') {
       steps {
         echo 'Deploying....'
 	sh 'knife bootstrap -y sit -N sit -x root -P root -r tomcat::deploy,tomcat::sit'
-        input(message: 'Continue?')
       }
     }
     stage('SIT Tests') {
       steps {
         echo 'Running SoapUI functional tests...'
         sh './mvnw soapui-pro:test -Dendpoint=http://sit:8080 -DjunitReport=true'
-        input(message: 'Continue?')
       }
     }
     stage('UAT Deploy') {
@@ -59,12 +50,6 @@ pipeline {
     always {
       junit 'target/surefire-reports/*.xml'
       junit 'TEST*.xml'
-    }
-    success {
-      slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-    }
-    failure {
-      slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
     }
   }
 }
