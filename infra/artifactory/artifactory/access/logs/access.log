@@ -33,3 +33,31 @@
 2018-01-19 18:05:48,362 [http-nio-8040-exec-5] [INFO ] (o.j.a.s.s.b.AccessImporterExporterImpl:64) - Exporting config...
 2018-01-19 18:05:48,384 [http-nio-8040-exec-5] [INFO ] (o.j.a.s.s.b.AccessImporterExporterImpl:64) - Exporting encryption...
 2018-01-19 18:05:48,387 [http-nio-8040-exec-5] [INFO ] (o.j.a.s.s.b.AccessImporterExporterImpl:64) - Exporting home...
+2018-03-07 18:39:25,796 [localhost-startStop-2] [INFO ] (o.j.a.c.AccessApplicationContextInitializer:46) - Using JFrog Access home at '/opt/jfrog/artifactory/access'
+2018-03-07 18:39:25,804 [localhost-startStop-2] [INFO ] (o.j.a.AccessApplication:48) - Starting AccessApplication v3.1.4 on b8e86ecad31a with PID 181 (/opt/jfrog/artifactory/tomcat/webapps/access/WEB-INF/lib/access-application-3.1.4.jar started by artifactory in /)
+2018-03-07 18:39:25,820 [localhost-startStop-2] [INFO ] (o.j.a.AccessApplication:597) - The following profiles are active: production,grpc
+2018-03-07 18:39:53,601 [localhost-startStop-2] [INFO ] (o.j.a.s.d.u.AccessJdbcHelperImpl:129) - Database: Apache Derby 10.11.1.1 - (1616546). Driver: Apache Derby Embedded JDBC Driver 10.11.1.1 - (1616546)
+2018-03-07 18:39:53,602 [localhost-startStop-2] [INFO ] (o.j.a.s.d.u.AccessJdbcHelperImpl:132) - Connection URL: jdbc:derby:/opt/jfrog/artifactory/data/derby
+2018-03-07 18:39:58,929 [localhost-startStop-2] [INFO ] (o.j.a.s.s.c.InternalConfigurationServiceImpl:87) - Loading configuration from db finished successfully
+2018-03-07 18:40:01,454 [localhost-startStop-2] [INFO ] (o.j.a.s.s.AccessStartupServiceImpl:80) - Found master.key file at /opt/jfrog/artifactory/etc/security/master.key, using it as master.key
+2018-03-07 18:40:03,514 [localhost-startStop-2] [INFO ] (o.j.a.s.s.t.TokenServiceImpl:84) - Scheduling task for revoking expired tokens using cron expression: 0 0 0/1 * * ?
+2018-03-07 18:40:04,091 [localhost-startStop-2] [INFO ] (o.j.a.s.r.c.RpcServiceInvoker:86) - Added service: sync
+2018-03-07 18:40:05,464 [localhost-startStop-2] [INFO ] (o.j.a.s.AccessServerBootstrapImpl:93) - [ACCESS BOOTSTRAP] Starting JFrog Access bootstrap...
+2018-03-07 18:40:08,484 [localhost-startStop-2] [INFO ] (o.j.a.s.AccessServerBootstrapImpl:146) - [ACCESS BOOTSTRAP] Updating server '8cb36ffa-a7b0-45a8-9acf-63588412d475' private key finger print to: d42aa8a0b08e3685fe9dbb9307d43f4994afd6bdd5d340895b29bad05f98422c
+2018-03-07 18:40:10,375 [localhost-startStop-2] [INFO ] (o.j.a.s.AccessServerBootstrapImpl:108) - [ACCESS BOOTSTRAP] JFrog Access bootstrap finished.
+2018-03-07 18:40:19,558 [localhost-startStop-2] [INFO ] (o.j.a.s.s.s.RefreshableScheduledJob:56) - Scheduling heartbeat task to run every 5 seconds
+2018-03-07 18:40:37,093 [localhost-startStop-2] [INFO ] (o.j.a.AccessApplication:57) - Started AccessApplication in 77.26 seconds (JVM running for 85.848)
+2018-03-09 14:40:42,133 [localhost-startStop-2] [INFO ] (o.j.a.c.AccessApplicationContextInitializer:46) - Using JFrog Access home at '/opt/jfrog/artifactory/access'
+2018-03-09 14:40:42,147 [localhost-startStop-2] [INFO ] (o.j.a.AccessApplication:48) - Starting AccessApplication v3.1.4 on ab272feac40d with PID 181 (/opt/jfrog/artifactory/tomcat/webapps/access/WEB-INF/lib/access-application-3.1.4.jar started by artifactory in /)
+2018-03-09 14:40:42,200 [localhost-startStop-2] [INFO ] (o.j.a.AccessApplication:597) - The following profiles are active: production,grpc
+2018-03-09 14:41:08,515 [localhost-startStop-2] [INFO ] (o.j.a.s.d.u.AccessJdbcHelperImpl:129) - Database: Apache Derby 10.11.1.1 - (1616546). Driver: Apache Derby Embedded JDBC Driver 10.11.1.1 - (1616546)
+2018-03-09 14:41:08,545 [localhost-startStop-2] [INFO ] (o.j.a.s.d.u.AccessJdbcHelperImpl:132) - Connection URL: jdbc:derby:/opt/jfrog/artifactory/data/derby
+2018-03-09 14:41:16,027 [localhost-startStop-2] [INFO ] (o.j.a.s.s.c.InternalConfigurationServiceImpl:87) - Loading configuration from db finished successfully
+2018-03-09 14:41:19,236 [localhost-startStop-2] [INFO ] (o.j.a.s.s.AccessStartupServiceImpl:80) - Found master.key file at /opt/jfrog/artifactory/etc/security/master.key, using it as master.key
+2018-03-09 14:41:22,143 [localhost-startStop-2] [INFO ] (o.j.a.s.s.t.TokenServiceImpl:84) - Scheduling task for revoking expired tokens using cron expression: 0 0 0/1 * * ?
+2018-03-09 14:41:22,689 [localhost-startStop-2] [INFO ] (o.j.a.s.r.c.RpcServiceInvoker:86) - Added service: sync
+2018-03-09 14:41:25,667 [localhost-startStop-2] [INFO ] (o.j.a.s.AccessServerBootstrapImpl:93) - [ACCESS BOOTSTRAP] Starting JFrog Access bootstrap...
+2018-03-09 14:41:27,796 [localhost-startStop-2] [INFO ] (o.j.a.s.AccessServerBootstrapImpl:146) - [ACCESS BOOTSTRAP] Updating server '8cb36ffa-a7b0-45a8-9acf-63588412d475' private key finger print to: d42aa8a0b08e3685fe9dbb9307d43f4994afd6bdd5d340895b29bad05f98422c
+2018-03-09 14:41:28,833 [localhost-startStop-2] [INFO ] (o.j.a.s.AccessServerBootstrapImpl:108) - [ACCESS BOOTSTRAP] JFrog Access bootstrap finished.
+2018-03-09 14:41:39,422 [localhost-startStop-2] [INFO ] (o.j.a.s.s.s.RefreshableScheduledJob:56) - Scheduling heartbeat task to run every 5 seconds
+2018-03-09 14:41:55,835 [localhost-startStop-2] [INFO ] (o.j.a.AccessApplication:57) - Started AccessApplication in 80.838 seconds (JVM running for 87.916)

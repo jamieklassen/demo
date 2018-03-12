@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.smartbear.soapui</groupId>
+    <artifactId>soapui-pro-maven-plugin</artifactId>
+    <name>SoapUI Pro Maven plugin</name>
+    <description>Documentation: http://www.soapui.org/Test-Automation/maven-2x.html</description>
+    <version>4.6.4</version>
+    <packaging>maven-plugin</packaging>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>SmartBear Sweden Repository</id>
+            <url>http://www.soapui.org/repository/maven2</url>
+        </repository>
+        <repository>
+            <id>maven2-repository.java.net</id>
+            <name>Java.net Repository for Maven</name>
+            <url>http://java.net/projects/maven-repository/</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.smartbear.soapui</groupId>
+            <artifactId>soapui</artifactId>
+            <version>4.6.4</version>
+            <exclusions>
+
+                <!-- These are mainly GUI artifacts not needed in the headless test runner-->
+                <!-- TODO We might also want to remove: fife:rsyntaxtextarea.
+                          It's included in prior versions (< 4.5.2) though -->
+
+                <!-- Team dev -->
+
+                <exclusion>
+                    <groupId>teamdev</groupId>
+                    <artifactId>jxbrowser</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>teamdev</groupId>
+                    <artifactId>comfyj</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>teamdev</groupId>
+                    <artifactId>winpack</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>teamdev</groupId>
+                    <artifactId>xulrunner-windows</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>teamdev</groupId>
+                    <artifactId>xulrunner-linux64</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>teamdev</groupId>
+                    <artifactId>xulrunner-linux</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>teamdev</groupId>
+                    <artifactId>xulrunner-mac</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>teamdev</groupId>
+                    <artifactId>MozillaInterfaces</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>teamdev</groupId>
+                    <artifactId>engine-gecko</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>teamdev</groupId>
+                    <artifactId>engine-gecko15</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>teamdev</groupId>
+                    <artifactId>engine-ie</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>teamdev</groupId>
+                    <artifactId>engine-webkit</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>teamdev</groupId>
+                    <artifactId>jniwrap</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>teamdev</groupId>
+                    <artifactId>xulrunner15-mac</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>teamdev</groupId>
+                    <artifactId>xulrunner15-windows</artifactId>
+                </exclusion>
+
+                <!-- JGoodies -->
+
+                <exclusion>
+                    <groupId>com.jgoodies</groupId>
+                    <artifactId>forms</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.jgoodies</groupId>
+                    <artifactId>binding</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.smartbear.soapui</groupId>
+            <artifactId>soapui-pro</artifactId>
+            <version>4.6.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>1.8</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>annotations</artifactId>
+            <version>2.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>2.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>net-components</groupId>
+            <artifactId>netcomponents</artifactId>
+            <version>1.3.8a</version>
+        </dependency>
+        <dependency>
+            <groupId>idw</groupId>
+            <artifactId>idw</artifactId>
+            <version>1.6.1</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.jexcelapi</groupId>
+            <artifactId>jxl</artifactId>
+            <version>2.6.12</version>
+        </dependency>
+    </dependencies>
+</project>

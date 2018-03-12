@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>stocks</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>demo</name>
-	<description>Demo project for Spring Boot</description>
+	<name>stocks</name>
+	<description>Fake Stocks database app</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -19,17 +19,16 @@
 	</parent>
 
 	<repositories>
-		<repository>
-			<id>spring-releases</id>
-			<name>Spring Releases</name>
-			<url>https://repo.spring.io/libs-release</url>
-		</repository>
+   	 	<repository>
+   	 		<id>central</id>
+   	 		<url>http://artifactory:8081/artifactory/central</url>
+   	 	</repository>
 	</repositories>
 
 	<pluginRepositories>
 		<pluginRepository>
-			<id>SmartBearPluginRepository</id>
-			<url>http://smartbearsoftware.com/repository/maven2</url>
+			<id>plugins</id>
+   	 	    	<url>http://artifactory:8081/artifactory/plugins</url>
 		</pluginRepository>
 	</pluginRepositories>
 
