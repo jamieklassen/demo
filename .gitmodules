@@ -1,3 +1,6 @@
 [submodule "hygieia"]
 	path = hygieia
 	url = https://github.com/capitalone/Hygieia.git
+[submodule "infra/hygieia"]
+	path = infra/hygieia
+	url = https://github.com/capitalone/Hygieia
