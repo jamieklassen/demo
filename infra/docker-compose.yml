@@ -2,15 +2,21 @@ version: '3'
 services:
   jenkins:
     ports:
-    - "8080:8080"
+    - "8085:8080"
     build: ./jenkins
-  gogs:
+    image: jenkins
+  gitlab:
     ports:
     - "10022:22"
-    - "10080:3000"
-    build: ./gogs
+    - "10080:80"
+    image: gitlab/gitlab-ce
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        initial_root_password 'password'
+    hostname: gitlab
   artifactory:
     build: ./artifactory
+    image: artifactory
     ports:
     - "9001:8081"
   sonarqube:
@@ -21,6 +27,7 @@ services:
     ports:
     - "3030:3000"
     build: ./grafana
+    image: grafana
     links:
     - prometheus
   prometheus:
@@ -33,6 +40,7 @@ services:
     image: prom/prometheus
   chef-server:
     build: ./chef-server
+    image: chef-server
     entrypoint:
     - knife
     - serve
@@ -44,6 +52,7 @@ services:
     - /root/.chef/local-mode-cache
   sit:
     build: ./tomcat
+    image: sit
     hostname: sit
     ports:
     - "8081:8080"
@@ -58,6 +67,7 @@ services:
     - POSTGRES_PASSWORD=postgres
   uat:
     build: ./tomcat
+    image: uat
     hostname: uat
     ports:
     - "8082:8080"
@@ -70,6 +80,7 @@ services:
     - POSTGRES_PASSWORD=postgres
   prod:
     build: ./tomcat
+    image: prod
     hostname: prod
     ports:
     - "8083:8080"

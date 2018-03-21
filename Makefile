@@ -17,8 +17,10 @@ setup_db_urls:
 build_app:
 	pushd app && ./mvnw package -Dmaven.test.skip=true && popd
 git_init:
+	infra/gitlab_init.sh
 	infra/git_init.sh app
 	infra/git_init.sh config
+	infra/gitlab_hooks.sh
 up: start_containers git_init setup_db_urls
 down:
 	docker-compose -f infra/docker-compose.yml down

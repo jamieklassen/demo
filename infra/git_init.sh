@@ -1,16 +1,9 @@
 #!/bin/bash
-# wait for gogs to be up
-false
-while [ "$?" != "0" ]; do
-  echo "waiting for git server..."
-  sleep 1
-  curl -f localhost:10080 >/dev/null 2>&1
-done
+curl -XPOST "localhost:10080/api/v4/projects?name=$repo&private_token=token"
 repo=$1
 git -C $repo init
 git -C $repo add .
 git -C $repo ci -m 'initial commit'
-git -C $repo remote add origin http://username:password@localhost:10080/username/$repo.git
-sleep 4
+git -C $repo remote add origin http://oauth2:token@localhost:10080/root/$repo.git
 git -C $repo push origin master
 rm -rf $repo/.git

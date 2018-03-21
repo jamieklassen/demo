@@ -11,6 +11,8 @@ COPY app_config.xml /var/jenkins_home/app_config.xml
 COPY app_config.groovy /var/jenkins_home/init.groovy.d/app_config.groovy
 COPY config_config.xml /var/jenkins_home/config_config.xml
 COPY config_config.groovy /var/jenkins_home/init.groovy.d/config_config.groovy
+COPY jenkins_rsa /var/jenkins_home/jenkins_rsa
+COPY credentials.xml /var/jenkins_home/credentials.xml
 COPY knife.rb /var/jenkins_home/.chef/knife.rb
 COPY validator.pem /var/jenkins_home/.chef/.pem
 USER root
