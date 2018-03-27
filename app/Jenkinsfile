@@ -18,7 +18,16 @@ pipeline {
     stage('SIT Deploy') {
       steps {
         echo 'Deploying....'
-	sh 'knife bootstrap -y sit -N sit -x root -P root -r tomcat::deploy,tomcat::sit'
+	    sh 'knife bootstrap -y sit -N sit -x root -P root -r tomcat::deploy,tomcat::sit'
+	    hygieiaDeployPublishStep(
+	      applicationName: 'app',
+	      artifactDirectory: 'target',
+	      artifactGroup: 'com.example.stocks',
+	      artifactName: '*.war',
+	      artifactVersion: '',
+	      buildStatus: 'Success',
+	      environmentName: 'SIT'
+	    )
       }
     }
     stage('SIT Tests') {
@@ -30,7 +39,16 @@ pipeline {
     stage('UAT Deploy') {
       steps {
         echo 'Deploying....'
-	sh 'knife bootstrap -y uat -N uat -x root -P root -r tomcat::deploy,tomcat::uat'
+	    sh 'knife bootstrap -y uat -N uat -x root -P root -r tomcat::deploy,tomcat::uat'
+	    hygieiaDeployPublishStep(
+	      applicationName: 'app',
+	      artifactDirectory: 'target',
+	      artifactGroup: 'com.example.stocks',
+	      artifactName: '*.war',
+	      artifactVersion: '',
+	      buildStatus: 'Success',
+	      environmentName: 'UAT'
+	    )
       }
     }
     stage('Load Tests') {
@@ -42,7 +60,16 @@ pipeline {
     stage('Prod Deploy') {
       steps {
         echo 'Deploying....'
-	sh 'knife bootstrap -y prod -N prod -x root -P root -r tomcat::deploy,tomcat::prod'
+	    sh 'knife bootstrap -y prod -N prod -x root -P root -r tomcat::deploy,tomcat::prod'
+	    hygieiaDeployPublishStep(
+	      applicationName: 'app',
+	      artifactDirectory: 'target',
+	      artifactGroup: 'com.example.stocks',
+	      artifactName: '*.war',
+	      artifactVersion: '',
+	      buildStatus: 'Success',
+	      environmentName: 'PROD'
+	    )
       }
     }
   }
