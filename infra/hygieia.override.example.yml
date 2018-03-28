@@ -1,0 +1,17 @@
+version: '3'
+services:
+  gitlab-feature-collector:
+    environment:
+      GITLAB_HOST: gitlab
+      GITLAB_API_TOKEN: token
+  gitlab-scm-collector:
+    environment:
+      GITLAB_HOST: gitlab
+      GITLAB_API_TOKEN: token
+  jenkins-build-collector:
+    environment:
+      JENKINS_MASTER: http://jenkins:8080
+  sonar-codequality-collector:
+    environment:
+      SONAR_URL: http://sonarqube:9000
+      SONAR_VERSION: "6.72"

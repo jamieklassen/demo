@@ -4,7 +4,10 @@
 Docker-compose.
 
 ## Setup
-Run `make up`.
+Run `make up`. This will start the main pipeline containers on your default docker host. Take
+`infra/hygieia.override.example.yml` and edit it to point at the correct URLs, saving the
+resulting file at `infra/hygieia.override.yml`. If necessary, change docker hosts before running
+`make hygieia`.
 
 ## Hygieia
 Check it out at `$DOCKER_HOST:3000`.
@@ -21,8 +24,8 @@ You will also have access to the following environments in which the sample app 
 ## Monitoring
 
 TEMPORARILY DISABLED - but there should be a grafana dashboard at `$DOCKER_HOST:3030` showing JMX
-data from prometheus. However, that prometheus image uses a volume by default and I can't easily mount
-a directory on my laptop in a docker host in the cloud.
+data from prometheus. However, that prometheus image uses a volume by default and I can't easily
+mount a directory on my laptop in a docker host in the cloud.
 
 ## Jenkins
 You can access Jenkins at `http://$DOCKER_HOST:8085`
@@ -40,4 +43,4 @@ It's at `$DOCKER_HOST:9000`
 It's at `$DOCKER_HOST:9001`
 
 ## Teardown
-Run `make down`.
+Run `make down` and `make hygieia-down`, pointing at the correct docker hosts respectively.

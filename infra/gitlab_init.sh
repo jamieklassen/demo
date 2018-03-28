@@ -1,6 +1,10 @@
 #!/bin/bash
 # wait for gitlab to be up
-GITLAB_HOST="$(echo $DOCKER_HOST|sed 's;.*://\([^:]*\):\(.*\);\1;'):10080"
+if [ -z "$DOCKER_HOST" ]; then
+  GITLAB_HOST="localhost:10080"
+else
+  GITLAB_HOST="$(echo $DOCKER_HOST|sed 's;.*://\([^:]*\):\(.*\);\1;'):10080"
+fi
 false
 while [ "$?" != "0" ]; do
   echo "waiting for git server..."

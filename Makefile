@@ -22,6 +22,10 @@ git_init:
 	infra/git_init.sh config
 	infra/gitlab_hooks.sh
 up: start_containers git_init setup_db_urls
+hygieia:
+	docker-compose -f infra/hygieia.yml -f infra/hygieia.override.yml up -d
+hygieia-down:
+	docker-compose -f infra/hygieia.yml -f infra/hygieia.override.yml down
 down:
 	docker-compose -f infra/docker-compose.yml down
 clean:

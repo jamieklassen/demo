@@ -9,6 +9,7 @@ global-groovy.log
 .DS_Store
 *.war
 infra/jenkins/app/*
+infra/hygieia.override.yml
 
 ### STS ###
 .apt_generated
