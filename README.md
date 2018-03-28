@@ -4,41 +4,40 @@
 Docker-compose.
 
 ## Setup
-Run `make up`. Note that for links between Jenkins and Sonarqube to 
-work properly, you will likely have to add a line like
-```
-127.0.0.1	sonarqube
-```
-to your `/etc/hosts` file (at least on Mac).
+Run `make up`.
 
-## Jenkins
-You can access Jenkins at http://localhost:8080
+## Hygieia
+Check it out at `$DOCKER_HOST:3000`.
 
 ## Deployment environments
 You will also have access to the following environments in which the sample app is deployed:
 
-| Environment | URL                   |
+| Environment | Port (on docker host) |
 | ----------- | --------------------- |
-| Dev/SIT     | http://localhost:8081 |
-| UAT         | http://localhost:8082 |
-| Production  | http://localhost:8083 |
+| Dev/SIT     | 8081                  |
+| UAT         | 8082                  |
+| Production  | 8083                  |
+
+## Monitoring
+
+TEMPORARILY DISABLED - but there should be a grafana dashboard at `$DOCKER_HOST:3030` showing JMX
+data from prometheus. However, that prometheus image uses a volume by default and I can't easily mount
+a directory on my laptop in a docker host in the cloud.
+
+## Jenkins
+You can access Jenkins at `http://$DOCKER_HOST:8085`
 
 ## Git
-There is a Gogs server running. You can look at the repo at http://localhost:10080/username/app.
+There is a gitlab server running. You can look at the repo at `http://$DOCKER_HOST:10080/root/app`.
 In a workspace directory, run
-`git clone http://username:password@localhost:10080/username/app.git`. Then if you make changes
+`git clone http://oauth2:token@$DOCKER_HOST:10080/username/app.git`. Then if you make changes
 and run `git push`, the Jenkins build will automatically be triggered.
 
-## Slack
-This jenkins is preconfigured to send slack messages to https://agilecoedemo.slack.com.
+## Sonarqube
+It's at `$DOCKER_HOST:9000`
 
-## Presentation Slides
-Ensure you have remarker installed (say via `npm i -g remarker`), and run `npx remarker` in the
-root of the repository. Slides should then be viewable at http://localhost:6275.
+## Artifactory
+It's at `$DOCKER_HOST:9001`
 
 ## Teardown
-In the `infra/` folder, run `make down`.
-
-## Architecture
-The below diagram describes the various players in the demo:
-![./sequence-diagram.svg](./sequence-diagram.svg)
+Run `make down`.
