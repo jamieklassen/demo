@@ -17,7 +17,7 @@ services:
     ports:
       - "8080:8080"
   apiaudit:
-    build: ./apiaudit
+    image: cklassen/hygieia-apiaudit
     depends_on:
       - db-setup
     ports:

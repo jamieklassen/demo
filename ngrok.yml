@@ -1,0 +1,4 @@
+tunnels:
+  novnc:
+    addr: 80
+    proto: http
