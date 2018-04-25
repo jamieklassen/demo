@@ -23,21 +23,21 @@ services:
     image: sonarqube:6.7.2
     ports:
     - "9000:9000"
-#  grafana:
-#    ports:
-#    - "3030:3000"
-#    build: ./grafana
-#    image: grafana
-#    links:
-#    - prometheus
-#  prometheus:
-#    ports:
-#    - "9090:9090"
-#    volumes:
-#    - ./prometheus.yml:/etc/prometheus/prometheus.yml
-#    command:
-#    - '--config.file=/etc/prometheus/prometheus.yml'
-#    image: prom/prometheus
+  grafana:
+    ports:
+    - "3030:3000"
+    build: ./grafana
+    image: grafana
+    links:
+    - prometheus
+  prometheus:
+    ports:
+    - "9090:9090"
+    volumes:
+    - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+    - '--config.file=/etc/prometheus/prometheus.yml'
+    image: prom/prometheus
   chef-server:
     build: ./chef-server
     image: chef-server
