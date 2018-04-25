@@ -19,15 +19,6 @@ pipeline {
       steps {
         echo 'Deploying....'
 	    sh 'knife bootstrap -y sit -N sit -x root -P root -r tomcat::deploy,tomcat::sit'
-	    hygieiaDeployPublishStep(
-	      applicationName: 'app',
-	      artifactDirectory: 'target',
-	      artifactGroup: 'com.example.stocks',
-	      artifactName: '*.war',
-	      artifactVersion: '',
-	      buildStatus: 'Success',
-	      environmentName: 'SIT'
-	    )
       }
     }
     stage('SIT Tests') {
@@ -40,36 +31,19 @@ pipeline {
       steps {
         echo 'Deploying....'
 	    sh 'knife bootstrap -y uat -N uat -x root -P root -r tomcat::deploy,tomcat::uat'
-	    hygieiaDeployPublishStep(
-	      applicationName: 'app',
-	      artifactDirectory: 'target',
-	      artifactGroup: 'com.example.stocks',
-	      artifactName: '*.war',
-	      artifactVersion: '',
-	      buildStatus: 'Success',
-	      environmentName: 'UAT'
-	    )
       }
     }
     stage('Load Tests') {
       steps {
         echo 'Running SoapUI Load Tests...'
         sh './mvnw soapui-pro:loadtest -Dendpoint=http://uat:8080 -DprintReport=true'
+        input 'Deploy to Production?'
       }
     }
     stage('Prod Deploy') {
       steps {
         echo 'Deploying....'
 	    sh 'knife bootstrap -y prod -N prod -x root -P root -r tomcat::deploy,tomcat::prod'
-	    hygieiaDeployPublishStep(
-	      applicationName: 'app',
-	      artifactDirectory: 'target',
-	      artifactGroup: 'com.example.stocks',
-	      artifactName: '*.war',
-	      artifactVersion: '',
-	      buildStatus: 'Success',
-	      environmentName: 'PROD'
-	    )
       }
     }
   }
