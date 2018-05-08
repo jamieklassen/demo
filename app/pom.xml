@@ -18,20 +18,6 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<repositories>
-   	 	<repository>
-   	 		<id>central</id>
-   	 		<url>http://artifactory:8081/artifactory/central</url>
-   	 	</repository>
-	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>plugins</id>
-   	 	    	<url>http://artifactory:8081/artifactory/plugins</url>
-		</pluginRepository>
-	</pluginRepositories>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -43,6 +29,19 @@
 		<printReport>false</printReport>
 		<sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath>
 	</properties>
+
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>releases</name>
+			<url>http://artifactory:8081/artifactory/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>snapshots</name>
+			<url>http://artifactory:8081/artifactory/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<dependencies>
 		<dependency>

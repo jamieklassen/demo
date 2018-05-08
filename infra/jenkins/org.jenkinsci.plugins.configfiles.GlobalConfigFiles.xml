@@ -1,0 +1,58 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<org.jenkinsci.plugins.configfiles.GlobalConfigFiles plugin="config-file-provider@2.18">
+  <configs class="sorted-set">
+    <comparator class="org.jenkinsci.plugins.configfiles.GlobalConfigFiles$1"/>
+    <org.jenkinsci.plugins.configfiles.maven.GlobalMavenSettingsConfig>
+      <id>4775eac3-45b1-40cc-b683-275392fb3893</id>
+      <name>maven-settings</name>
+      <comment></comment>
+      <content>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;settings xsi:schemaLocation=&quot;http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd&quot; xmlns=&quot;http://maven.apache.org/SETTINGS/1.1.0&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+  &lt;servers&gt;
+    &lt;server&gt;
+      &lt;username&gt;admin&lt;/username&gt;
+      &lt;password&gt;admin&lt;/password&gt;
+      &lt;id&gt;releases&lt;/id&gt;
+    &lt;/server&gt;
+    &lt;server&gt;
+      &lt;username&gt;admin&lt;/username&gt;
+      &lt;password&gt;admin&lt;/password&gt;
+      &lt;id&gt;snapshots&lt;/id&gt;
+    &lt;/server&gt;
+  &lt;/servers&gt;
+  &lt;profiles&gt;
+    &lt;profile&gt;
+      &lt;repositories&gt;
+        &lt;repository&gt;
+          &lt;snapshots&gt;
+            &lt;enabled&gt;false&lt;/enabled&gt;
+          &lt;/snapshots&gt;
+          &lt;id&gt;central&lt;/id&gt;
+          &lt;name&gt;central&lt;/name&gt;
+          &lt;url&gt;http://artifactory:8081/artifactory/central&lt;/url&gt;
+        &lt;/repository&gt;
+      &lt;/repositories&gt;
+      &lt;pluginRepositories&gt;
+        &lt;pluginRepository&gt;
+          &lt;snapshots&gt;
+            &lt;enabled&gt;false&lt;/enabled&gt;
+          &lt;/snapshots&gt;
+          &lt;id&gt;plugins&lt;/id&gt;
+          &lt;name&gt;plugins&lt;/name&gt;
+          &lt;url&gt;http://artifactory:8081/artifactory/plugins&lt;/url&gt;
+        &lt;/pluginRepository&gt;
+      &lt;/pluginRepositories&gt;
+      &lt;id&gt;artifactory&lt;/id&gt;
+    &lt;/profile&gt;
+  &lt;/profiles&gt;
+  &lt;activeProfiles&gt;
+    &lt;activeProfile&gt;artifactory&lt;/activeProfile&gt;
+  &lt;/activeProfiles&gt;
+&lt;/settings&gt;</content>
+      <providerId>org.jenkinsci.plugins.configfiles.maven.GlobalMavenSettingsConfig</providerId>
+      <serverCredentialMappings/>
+      <isReplaceAll>true</isReplaceAll>
+    </org.jenkinsci.plugins.configfiles.maven.GlobalMavenSettingsConfig>
+  </configs>
+</org.jenkinsci.plugins.configfiles.GlobalConfigFiles>

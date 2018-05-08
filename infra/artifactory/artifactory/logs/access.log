@@ -3044,3 +3044,8 @@
 2018-03-09 14:45:21,144 [ACCEPTED DOWNLOAD] plugins:com/lowagie/itext/2.1.7/itext-2.1.7.jar.sha1 for anonymous/172.18.0.12.
 2018-03-09 14:45:30,874 [ACCEPTED DOWNLOAD] generic-local:app.war for admin/172.18.0.8.
 2018-03-09 14:46:13,305 [ACCEPTED DOWNLOAD] generic-local:app.war for admin/172.18.0.4.
+2018-04-30 17:19:26,670 [ACCEPTED LOGIN]  for admin/172.17.0.1.
+2018-04-30 17:19:52,038 [ACCEPTED CONFIGURATION_CHANGE]  for admin/172.17.0.1.
+2018-04-30 17:20:01,642 [ACCEPTED DELETE] generic-local:app.war for admin/172.17.0.1.
+2018-04-30 17:20:01,643 [ACCEPTED DELETE] generic-local: for admin/172.17.0.1.
+2018-04-30 17:20:01,814 [ACCEPTED CONFIGURATION_CHANGE]  for admin/172.17.0.1.

@@ -11,8 +11,10 @@ pipeline {
     }
     stage('Publish Build') {
       steps {
-        echo 'Publishing to Artifactory...'
-        sh 'curl -f -u admin:admin -T target/*.war "http://artifactory:8081/artifactory/generic-local/app.war"'
+        withMaven(mavenSettingsConfig: '4775eac3-45b1-40cc-b683-275392fb3893') {
+          echo 'Publishing to Artifactory...'
+          sh './mvnw deploy -Dmaven.test.skip=true'
+        }
       }
     }
     stage('SIT Deploy') {
@@ -24,7 +26,9 @@ pipeline {
     stage('SIT Tests') {
       steps {
         echo 'Running SoapUI functional tests...'
-        sh './mvnw soapui-pro:test -Dendpoint=http://sit:8080 -DjunitReport=true'
+        withMaven(mavenSettingsConfig: '4775eac3-45b1-40cc-b683-275392fb3893') {
+          sh './mvnw soapui-pro:test -Dendpoint=http://sit:8080 -DjunitReport=true'
+        }
       }
     }
     stage('UAT Deploy') {
@@ -35,9 +39,11 @@ pipeline {
     }
     stage('Load Tests') {
       steps {
-        echo 'Running SoapUI Load Tests...'
-        sh './mvnw soapui-pro:loadtest -Dendpoint=http://uat:8080 -DprintReport=true'
-        input 'Deploy to Production?'
+        withMaven(mavenSettingsConfig: '4775eac3-45b1-40cc-b683-275392fb3893') {
+          echo 'Running SoapUI Load Tests...'
+          sh './mvnw soapui-pro:loadtest -Dendpoint=http://uat:8080 -DprintReport=true'
+          input 'Deploy to Production?'
+        }
       }
     }
     stage('Prod Deploy') {

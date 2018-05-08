@@ -12,7 +12,7 @@
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>${jfrog.access.home}/logs/access.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <FileNamePattern>${jfrog.access.home}/logs/access.%i.log.zip</FileNamePattern>
+            <FileNamePattern>${jfrog.access.home}/logs/access.%i.log</FileNamePattern>
             <MinIndex>1</MinIndex>
             <MaxIndex>9</MaxIndex>
         </rollingPolicy>
@@ -33,7 +33,7 @@
             </layout>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <FileNamePattern>${jfrog.access.home}/logs/audit.%i.log.zip</FileNamePattern>
+            <FileNamePattern>${jfrog.access.home}/logs/audit.%i.log</FileNamePattern>
             <maxIndex>13</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
@@ -55,6 +55,21 @@
             <MaxFileSize>25MB</MaxFileSize>
         </triggeringPolicy>
     </appender>
+    <appender name="SECURITY.AUDIT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${jfrog.access.home}/logs/security.audit.log</File>
+        <encoder>
+            <pattern>
+                %date{yyyy-MM-dd'T'HH:mm:ss.SSSZ}|%X{audit.performingUserIp}|%X{audit.performingUser}|%X{audit.loggedinPrincipal}|%X{audit.entityName}|%X{audit.securityEventType}|%X{audit.securityEvent}|%X{audit.dataChanged}%n
+            </pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <FileNamePattern>${jfrog.access.home}/logs/security.audit.%i.log.gz</FileNamePattern>
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>100MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
 
     <root>
         <level value="warn"/>
@@ -71,6 +86,10 @@
     <logger name="org.jfrog.access.server.audit.TokenAuditor" additivity="false">
         <level value="info"/>
         <appender-ref ref="AUDIT"/>
+    </logger>
+    <logger name="org.jfrog.access.server.audit.security.AuditLogger" additivity="false">
+        <level value="info"/>
+        <appender-ref ref="SECURITY.AUDIT"/>
     </logger>
 
     <!-- third party loggers -->

@@ -3,7 +3,7 @@ directory '/var/lib/tomcat7/webapps/ROOT' do
   recursive true
 end
 remote_file '/var/lib/tomcat7/webapps/ROOT.war' do
-  source 'http://admin:admin@artifactory:8081/artifactory/generic-local/app.war'
+  source 'http://artifactory:8081/artifactory/snapshots/com/example/stocks/0.0.1-SNAPSHOT/stocks-0.0.1-SNAPSHOT.war'
 end
 service 'tomcat7' do
   action :restart

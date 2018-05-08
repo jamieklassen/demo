@@ -5,6 +5,7 @@ RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 COPY jenkins.plugins.slack.SlackNotifier.xml /var/jenkins_home/jenkins.plugins.slack.SlackNotifier.xml
 COPY jenkins.model.JenkinsLocationConfiguration.xml /var/jenkins_home/jenkins.model.JenkinsLocationConfiguration.xml
 COPY hudson.plugins.sonar.SonarGlobalConfiguration.xml /var/jenkins_home/hudson.plugins.sonar.SonarGlobalConfiguration.xml
+COPY org.jenkinsci.plugins.configfiles.GlobalConfigFiles.xml /var/jenkins_home/org.jenkinsci.plugins.configfiles.GlobalConfigFiles.xml
 COPY validator.pem /etc/chef/client.pem
 USER jenkins
 COPY app_config.xml /var/jenkins_home/app_config.xml
